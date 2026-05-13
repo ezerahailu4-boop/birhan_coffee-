@@ -248,6 +248,9 @@ export default function Contact() {
               © 2025 Birhan Coffee PLC. All rights reserved.
             </span>
             <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.68rem', letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(194,124,58,.35)' }}>
+              Developed by Ezera Hailu & Matiyas Tesfaye
+            </span>
+            <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.68rem', letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(194,124,58,.35)' }}>
               Addis Ababa · Ethiopia · Direct Trade
             </span>
           </div>
