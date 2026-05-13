@@ -95,7 +95,7 @@ export default function Navbar({ cartCount, onCartOpen }) {
 
         {/* Logo */}
         <NavLink to="/" style={{ textDecoration:'none', display:'flex', alignItems:'center', gap:11, flexShrink:0 }}>
-          <img src="/images/logo.png" alt="Birhan Coffee" style={{ width:44, height:44, objectFit:'contain', borderRadius:'50%', boxShadow:'0 0 20px rgba(194,124,58,.35)', border:'2px solid rgba(194,124,58,0.4)' }} />
+          <img src="/logo.png" alt="Birhan Coffee" style={{ width:44, height:44, objectFit:'contain', borderRadius:'50%', boxShadow:'0 0 20px rgba(194,124,58,.35)', border:'2px solid rgba(194,124,58,0.4)' }} />
           <div>
             <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:'1.15rem', fontWeight:700, color:'#F5ECD7', lineHeight:1 }}>Birhan Coffee</div>
             <div style={{ fontFamily:'DM Sans,sans-serif', fontSize:'.6rem', letterSpacing:'.25em', textTransform:'uppercase', color:'rgba(194,124,58,.8)', marginTop:2 }}>PLC · Est. 2019</div>

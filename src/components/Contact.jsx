@@ -149,7 +149,7 @@ export default function Contact() {
             {/* Brand column */}
             <div className="ft-brand">
               <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-                <img src="/images/logo.png" alt="Birhan Coffee" style={{ width: 42, height: 42, objectFit: 'contain', borderRadius: '50%', border: '2px solid rgba(194,124,58,0.4)', boxShadow: '0 0 18px rgba(194,124,58,.25)' }} />
+                <img src="/logo.png" alt="Birhan Coffee" style={{ width: 42, height: 42, objectFit: 'contain', borderRadius: '50%', border: '2px solid rgba(194,124,58,0.4)', boxShadow: '0 0 18px rgba(194,124,58,.25)' }} />
                 <div>
                   <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.1rem', fontWeight: 700, color: '#F5ECD7', lineHeight: 1 }}>Birhan Coffee</div>
                   <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.58rem', letterSpacing: '.22em', textTransform: 'uppercase', color: 'rgba(194,124,58,.7)', marginTop: 3 }}>PLC · Est. 2019</div>
