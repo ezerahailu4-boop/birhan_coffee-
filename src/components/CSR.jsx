@@ -47,7 +47,7 @@ export default function CSR() {
     <section id="csr" style={{ position: 'relative' }}>
 
       {/* Banner */}
-      <div style={{
+      <div className="bg-fixed" style={{
         position: 'relative', padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)',
         backgroundImage: `url(${CSR_BG})`,
         backgroundSize: 'cover', backgroundPosition: 'center',
@@ -68,7 +68,7 @@ export default function CSR() {
             Growth that isn't shared isn't growth at all. Birhan Coffee's CSR programme at Saylem and beyond invests directly in the infrastructure, education, and livelihoods of the communities that make our coffee possible.
           </p>
           {/* Impact stats */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 64, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 64, flexWrap: 'wrap' }} className="csr-impact">
             {IMPACT.map(({ n, l }) => (
               <div key={l} style={{ textAlign: 'center' }}>
                 <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 700, color: '#C27C3A', lineHeight: 1 }}>{n}</div>
@@ -82,14 +82,13 @@ export default function CSR() {
       {/* Initiatives Grid */}
       <div style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)', background: '#0c0908' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+          <div className="csr-grid">
             {CSR_INITIATIVES.map(item => (
-              <div key={item.title} style={{
+              <div key={item.title} className="csr-card" style={{
                 border: '1px solid rgba(245,236,215,0.08)',
                 borderRadius: 4, overflow: 'hidden',
                 background: 'rgba(255,255,255,0.02)',
                 transition: 'border-color 0.3s',
-                display: 'grid', gridTemplateColumns: '1fr 1fr',
               }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(194,124,58,0.25)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(245,236,215,0.08)'}
@@ -104,7 +103,7 @@ export default function CSR() {
                     <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.62rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.3)', marginTop: 2 }}>{item.statLabel}</div>
                   </div>
                 </div>
-                <div style={{ overflow: 'hidden' }}>
+                <div className="csr-card-img" style={{ overflow: 'hidden' }}>
                   <img src={item.img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               </div>
@@ -121,7 +120,7 @@ export default function CSR() {
             <h2 className="section-title">Vision · Mission · <em>Values</em></h2>
             <div className="divider center" />
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+          <div className="vmv-grid">
             {[
               {
                 label: 'Vision',

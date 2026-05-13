@@ -79,10 +79,7 @@ export default function Coffees({ onAddToCart }) {
         </div>
 
         {/* Origins Grid */}
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: 2, marginBottom: 80,
-        }}>
+        <div className="coffees-origins" style={{ marginBottom: 80 }}>
           {REGIONS.map((r, i) => (
             <div
               key={r.id}
@@ -179,7 +176,7 @@ export default function Coffees({ onAddToCart }) {
             Beyond the <em>Green Bean</em>
           </h3>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+        <div className="coffees-products">
           {PRODUCTS.map(p => (
             <div key={p.id} style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',

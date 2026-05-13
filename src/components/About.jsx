@@ -10,7 +10,7 @@ export default function About() {
         background: '#0c0908', position: 'relative',
       }}>
         {/* BG photo */}
-        <div style={{
+        <div className="bg-fixed" style={{
           position: 'absolute', inset: 0,
           backgroundImage: `url(${ABOUT_BG})`,
           backgroundSize: 'cover', backgroundPosition: 'center',
@@ -19,21 +19,14 @@ export default function About() {
         }} />
 
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
-            {/* Left: image collage */}
+          <div className="about-grid">
+            {/* Left: image */}
             <div style={{ position: 'relative' }}>
-              <div style={{
-                width: '100%', aspectRatio: '4/5', borderRadius: 4, overflow: 'hidden',
-                border: '1px solid rgba(245,236,215,0.08)',
-              }}>
-                <img src="/farm.jpg"  
-                  alt="Ethiopian Coffee Farm"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+              <div style={{ width: '100%', aspectRatio: '4/5', borderRadius: 4, overflow: 'hidden', border: '1px solid rgba(245,236,215,0.08)' }}>
+                <img src="/farm.jpg" alt="Ethiopian Coffee Farm" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(12,9,8,0.6) 0%, transparent 50%)' }} />
               </div>
-              {/* Floating stat card */}
-              <div style={{
+              <div className="about-stat-card" style={{
                 position: 'absolute', bottom: -24, right: -24,
                 background: 'rgba(12,9,8,0.95)', backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(194,124,58,0.3)',
@@ -54,29 +47,23 @@ export default function About() {
                 Birhan Coffee PLC was established in 2019 with a simple but powerful conviction: exceptional Ethiopian coffee, delivered with integrity. Over five years we built strong relationships with over 200 local farmers, invested in sustainable farming, and opened our modern processing facility in Sebeta.
               </p>
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 32, fontSize: '0.95rem' }}>
-                By 2022 we had expanded to international markets, earning recognition in the top 100 Ethiopian coffee exporters. Today, Birhan Coffee is synonymous with quality, sustainability, and community empowerment — from our Bole Sub-City headquarters to coffee roasters around the world.
+                By 2022 we had expanded to international markets, earning recognition in the top 100 Ethiopian coffee exporters. Today, Birhan Coffee is synonymous with quality, sustainability, and community empowerment.
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginBottom: 36 }}>
+              <div className="about-values">
                 {[
                   { icon: '🌱', label: 'Sustainable Farming', desc: 'Fair trade & eco-conscious practices at every stage' },
                   { icon: '🤝', label: 'Direct Relationships', desc: '200+ farming families paid premium fair prices' },
                   { icon: '🏆', label: 'Recognised Quality', desc: 'Top 100 Ethiopian coffee exporter since 2022' },
                   { icon: '🌍', label: 'Global Reach', desc: 'Exporting premium Arabica to international markets' },
                 ].map(v => (
-                  <div key={v.label} style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(245,236,215,0.07)',
-                    borderRadius: 4, padding: 20,
-                  }}>
+                  <div key={v.label} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(245,236,215,0.07)', borderRadius: 4, padding: 20 }}>
                     <div style={{ fontSize: '1.3rem', marginBottom: 8 }}>{v.icon}</div>
                     <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.05rem', color: '#F5ECD7', marginBottom: 4 }}>{v.label}</div>
                     <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.78rem', color: 'rgba(245,236,215,0.4)', lineHeight: 1.5 }}>{v.desc}</div>
                   </div>
                 ))}
               </div>
-              <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                Work With Us →
-              </button>
+              <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>Work With Us →</button>
             </div>
           </div>
         </div>
@@ -88,28 +75,22 @@ export default function About() {
         background: '#07050a',
       }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+          <div className="founder-grid">
             <div>
               <p className="section-label">Our Founder</p>
               <h2 className="section-title" style={{ marginBottom: 8 }}>Birhanu <em>Lemi</em></h2>
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 24 }}>
-                Founder & CEO, Birhan Coffee PLC
-              </p>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 24 }}>Founder & CEO, Birhan Coffee PLC</p>
               <div className="divider" />
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>
-                Born and raised in the lush highlands of Ethiopia, Birhanu Lemi spent 25 years building successful businesses — including the beloved personal care brand Birhan & BLT — before channelling his passion for his homeland's most famous export into Birhan Coffee PLC.
+                Born and raised in the lush highlands of Ethiopia, Birhanu Lemi spent 25 years building successful businesses before channelling his passion for his homeland's most famous export into Birhan Coffee PLC.
               </p>
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>
                 His founding vision was to blend Ethiopia's ancient coffee traditions with modern processing standards, paying fair prices that genuinely transform farmers' lives. Under his leadership, Birhan Coffee became a top-100 Ethiopian coffee exporter in just three years.
               </p>
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 36, fontSize: '0.95rem' }}>
-                Birhanu has received multiple national and international awards for sustainable farming and fair trade. His relentless pursuit of excellence and deep commitment to community uplift remain the beating heart of everything Birhan Coffee does.
+                Birhanu has received multiple national and international awards for sustainable farming and fair trade.
               </p>
-              <blockquote style={{
-                fontFamily: 'Cormorant Garamond,serif', fontStyle: 'italic',
-                fontSize: '1.4rem', color: 'rgba(212,165,90,0.85)', lineHeight: 1.5,
-                borderLeft: '2px solid #C27C3A', paddingLeft: 24,
-              }}>
+              <blockquote style={{ fontFamily: 'Cormorant Garamond,serif', fontStyle: 'italic', fontSize: 'clamp(1.1rem,2vw,1.4rem)', color: 'rgba(212,165,90,0.85)', lineHeight: 1.5, borderLeft: '2px solid #C27C3A', paddingLeft: 24 }}>
                 "Every cup of Birhan Coffee must not only taste exceptional — it must support a brighter future for Ethiopian farmers."
               </blockquote>
             </div>
@@ -118,7 +99,7 @@ export default function About() {
                 <img src={FOUNDER_IMG} alt="Birhanu Lemi" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,5,10,0.7) 0%, transparent 60%)' }} />
               </div>
-              <div style={{
+              <div className="founder-badge" style={{
                 position: 'absolute', top: 24, right: -24,
                 background: 'linear-gradient(135deg, #6B3A1F, #C27C3A)',
                 borderRadius: 4, padding: '20px 24px', minWidth: 160,

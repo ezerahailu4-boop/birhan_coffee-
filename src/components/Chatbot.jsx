@@ -183,13 +183,14 @@ export default function Chatbot() {
       setMsgs(prev => [...prev, { role: 'assistant', content: reply }]);
     } catch (e) {
       setApiOk(false);
-      setMsgs(prev => [...prev, { role: 'assistant', content: getOfflineReply(text), isOffline: true }]);
+      const offlineReply = getOfflineReply(text);
+      setMsgs(prev => [...prev, { role: 'assistant', content: offlineReply, isOffline: true }]);
     } finally {
       setTyping(false);
     }
   }, [input, typing, msgs, offline]);
 
-  const dotColor = offline ? '#FF9800' : '#4ade80';
+  const dotColor = offline ? '#C27C3A' : '#4ade80';
 
   return (
     <>
@@ -265,15 +266,15 @@ export default function Chatbot() {
                 <div style={{ display:'flex', alignItems:'center', gap:6, marginTop:3 }}>
                   <span style={{ width:7, height:7, borderRadius:'50%', background:dotColor, display:'inline-block', boxShadow:`0 0 8px ${dotColor}` }} />
                   <span style={{ fontFamily:'DM Sans,sans-serif', fontSize:'0.58rem', letterSpacing:'0.15em', textTransform:'uppercase', color:'rgba(194,124,58,0.8)' }}>
-                    Birhan Guide · {offline ? 'Local Mode' : 'AI · Live'}
+                    Birhan Guide · {offline ? 'Knowledge Base' : 'AI · Live'}
                   </span>
                 </div>
               </div>
             </div>
             <div style={{ display:'flex', alignItems:'center', gap:6 }}>
               {offline && (
-                <span style={{ background:'rgba(255,152,0,0.12)', border:'1px solid rgba(255,152,0,0.3)', borderRadius:20, padding:'3px 10px', fontFamily:'DM Sans,sans-serif', fontSize:'0.58rem', color:'#FF9800', letterSpacing:'0.1em' }}>
-                  📡 Offline
+                <span style={{ background:'rgba(194,124,58,0.12)', border:'1px solid rgba(194,124,58,0.3)', borderRadius:20, padding:'3px 10px', fontFamily:'DM Sans,sans-serif', fontSize:'0.58rem', color:'#C27C3A', letterSpacing:'0.1em' }}>
+                  📖 Knowledge Base
                 </span>
               )}
               <button onClick={() => { setMsgs([{ role:'assistant', content:"Selam! ☕ Fresh start. How can I help you today? *Tena Yistilign!*" }]); }}
@@ -316,7 +317,7 @@ export default function Chatbot() {
                       ? <span style={{ fontSize:'0.88rem' }}>{m.content}</span>
                       : <RichText text={m.content} />}
                   </div>
-                  {m.isOffline && <span style={{ fontFamily:'DM Sans,sans-serif', fontSize:'0.55rem', color:'rgba(255,152,0,0.5)', letterSpacing:'0.1em' }}>⚡ local</span>}
+                  {m.isOffline && <span style={{ fontFamily:'DM Sans,sans-serif', fontSize:'0.55rem', color:'rgba(194,124,58,0.5)', letterSpacing:'0.1em' }}>📖 knowledge base</span>}
                 </div>
               </div>
             ))}
@@ -366,7 +367,7 @@ export default function Chatbot() {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }}
-              placeholder={offline ? '⚡ Offline mode — ask anything!' : 'Ask about Birhan Coffee…'}
+              placeholder={offline ? 'Ask me about Birhan Coffee…' : 'Ask about Birhan Coffee…'}
               style={{
                 flex:1, background:'rgba(255,255,255,0.05)',
                 border:'1px solid rgba(245,236,215,0.12)',

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -25,7 +25,12 @@ import FAQ from './pages/FAQ';
 
 // WhatsApp redirect component
 function WhatsApp() {
-  window.location.href = 'https://wa.me/251091124309?text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee.';
+  useEffect(() => {
+    const appLink = 'whatsapp://send?phone=251911243099&text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee.';
+    const webLink = 'https://wa.me/251911243099?text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee.';
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    window.location.href = isMobile ? appLink : webLink;
+  }, []);
   return (
     <div style={{ background:'#07050a', minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', gap:16 }}>
       <div style={{ fontSize:'3rem' }}>💬</div>

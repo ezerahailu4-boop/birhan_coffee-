@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const CONTACT_BG = 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=70&fit=crop';
 
@@ -30,7 +31,7 @@ export default function Contact() {
   return (
     <section id="contact" style={{ position: 'relative' }}>
       {/* Map/info band */}
-      <div style={{
+      <div className="bg-fixed" style={{
         padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)',
         backgroundImage: `url(${CONTACT_BG})`,
         backgroundSize: 'cover', backgroundPosition: 'center',
@@ -39,7 +40,7 @@ export default function Contact() {
       }}>
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(7,5,10,0.88)' }} />
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80 }}>
+          <div className="contact-grid">
             <div>
               <p className="section-label">Get In Touch</p>
               <h2 className="section-title" style={{ marginBottom: 24 }}>
@@ -128,77 +129,127 @@ export default function Contact() {
       </div>
 
       {/* Footer */}
-      <footer style={{ background: '#040302', padding: 'clamp(40px,6vw,60px) clamp(20px,5vw,60px)', borderTop: '1px solid rgba(245,236,215,0.05)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'linear-gradient(135deg, #6B3A1F, #C27C3A)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem' }}>☕</div>
+      <footer style={{ background: '#040302', borderTop: '1px solid rgba(245,236,215,0.06)' }}>
+        <style>{`
+          .ft-link { font-family:'DM Sans',sans-serif; font-size:.84rem; font-weight:300; color:rgba(245,236,215,.5); text-decoration:none; display:flex; align-items:center; gap:7px; padding:5px 0; transition:color .2s; }
+          .ft-link:hover { color:#C27C3A; }
+          .ft-link:hover .ft-arr { opacity:1; transform:translateX(3px); }
+          .ft-arr { opacity:0; transition:all .2s; font-size:.7rem; color:#C27C3A; }
+          .ft-social { display:inline-flex; width:38px; height:38px; border-radius:9px; align-items:center; justify-content:center; background:rgba(255,255,255,.03); border:1px solid rgba(245,236,215,.07); transition:all .22s; }
+          .ft-social:hover { background:rgba(194,124,58,.15); border-color:rgba(194,124,58,.35); transform:translateY(-2px); }
+          .ft-col-title { font-family:'DM Sans',sans-serif; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(194,124,58,.7); margin-bottom:18px; }
+          @media(max-width:768px){ .ft-grid{ grid-template-columns:1fr 1fr !important; } .ft-brand{ grid-column:1/-1; } }
+          @media(max-width:480px){ .ft-grid{ grid-template-columns:1fr !important; } }
+        `}</style>
+
+        {/* Main grid */}
+        <div className="container" style={{ padding: 'clamp(50px,7vw,80px) clamp(20px,5vw,60px) clamp(30px,4vw,50px)' }}>
+          <div className="ft-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1fr', gap: 'clamp(30px,4vw,60px)' }}>
+
+            {/* Brand column */}
+            <div className="ft-brand">
+              <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                <img src="/images/logo.png" alt="Birhan Coffee" style={{ width: 42, height: 42, objectFit: 'contain', borderRadius: '50%', border: '2px solid rgba(194,124,58,0.4)', boxShadow: '0 0 18px rgba(194,124,58,.25)' }} />
+                <div>
+                  <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.1rem', fontWeight: 700, color: '#F5ECD7', lineHeight: 1 }}>Birhan Coffee</div>
+                  <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.58rem', letterSpacing: '.22em', textTransform: 'uppercase', color: 'rgba(194,124,58,.7)', marginTop: 3 }}>PLC · Est. 2019</div>
+                </div>
+              </Link>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, fontSize: '.85rem', color: 'rgba(245,236,215,.38)', lineHeight: 1.75, maxWidth: 260, marginBottom: 28 }}>
+                Premium Ethiopian Arabica — direct from farm to your cup. Yirgacheffe, Jimma, Masha &amp; beyond.
+              </p>
+              {/* Socials */}
+              <div style={{ display: 'flex', gap: 10 }}>
+                {[
+                  { title: 'Facebook', href: 'https://facebook.com/birhancoffee', svg: <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h2V2z" stroke="#F5ECD7" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" /></svg> },
+                  { title: 'Instagram', href: 'https://instagram.com/birhancoffee', svg: <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#F5ECD7" strokeWidth={1} /><path d="M16 11.37A4 4 0 1 1 12.63 8" stroke="#F5ECD7" strokeWidth={1} strokeLinecap="round" /><path d="M17.5 6.5h.01" stroke="#F5ECD7" strokeWidth={1} strokeLinecap="round" /></svg> },
+                  { title: 'LinkedIn', href: 'https://linkedin.com/company/birhancoffee', svg: <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2" stroke="#F5ECD7" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" /><rect x="2" y="9" width="4" height="12" rx="1" stroke="#F5ECD7" strokeWidth={1} /><circle cx="4" cy="4" r="2" stroke="#F5ECD7" strokeWidth={1} /></svg> },
+                  { title: 'Twitter / X', href: 'https://twitter.com/birhancoffee', svg: <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M4 4l16 16M4 20L20 4" stroke="#F5ECD7" strokeWidth={1} strokeLinecap="round" /></svg> },
+                ].map(s => (
+                  <a key={s.title} href={s.href} target="_blank" rel="noreferrer" title={s.title} aria-label={s.title} className="ft-social">
+                    {s.svg}
+                  </a>
+                ))}
+                {/* WhatsApp separate so we can use onClick */}
+                <a
+                  href="https://wa.me/251911243099?text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee."
+                  target="_blank"
+                  rel="noreferrer"
+                  title="WhatsApp"
+                  aria-label="WhatsApp"
+                  className="ft-social"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#F5ECD7" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
             <div>
-              <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1rem', fontWeight: 700, color: '#F5ECD7' }}>Birhan Coffee PLC</div>
-              <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(194,124,58,0.7)' }}>Addis Ababa · Est. 2019</div>
+              <div className="ft-col-title">Explore</div>
+              {[
+                { label: 'Home',        path: '/' },
+                { label: 'Farm to Cup', path: '/farmtocup' },
+                { label: 'Our Coffees', path: '/coffees' },
+                { label: 'Our Story',   path: '/story' },
+                { label: 'CSR',         path: '/csr' },
+                { label: 'Gallery',     path: '/gallery' },
+              ].map(l => (
+                <Link key={l.path} to={l.path} className="ft-link">
+                  <span className="ft-arr">→</span>{l.label}
+                </Link>
+              ))}
             </div>
-          </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
-            <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.75rem', color: 'rgba(245,236,215,0.25)' }}>
+            {/* Trust */}
+            <div>
+              <div className="ft-col-title">Our Story</div>
+              {[
+                { label: '⭐ Testimonials',   path: '/testimonials' },
+                { label: '🏆 Certifications', path: '/certifications' },
+                { label: '🗺️ Origins Map',    path: '/origins-map' },
+                { label: '✍️ Blog & Journal', path: '/blog' },
+                { label: '❓ FAQ',            path: '/faq' },
+              ].map(l => (
+                <Link key={l.path} to={l.path} className="ft-link">
+                  <span className="ft-arr">→</span>{l.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Contact */}
+            <div>
+              <div className="ft-col-title">Get In Touch</div>
+              <a href="https://wa.me/251911243099?text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee." target="_blank" rel="noreferrer" className="ft-link">
+                <span className="ft-arr">→</span>💬 WhatsApp Us
+              </a>
+              {[
+                { label: '📦 Request a Sample', path: '/sample-request' },
+                { label: '✉️ Contact Us', path: '/contact' },
+              ].map(l => (
+                <Link key={l.path} to={l.path} className="ft-link">
+                  <span className="ft-arr">→</span>{l.label}
+                </Link>
+              ))}
+              <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <a href="mailto:info@birhancoffee.com" className="ft-link">📧 info@birhancoffee.com</a>
+                <a href="tel:+2510911243099" className="ft-link">📞 +251 091 124 3099</a>
+                <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.82rem', color: 'rgba(245,236,215,.35)', display:'flex', gap:7, alignItems:'center' }}>📍 Bole Sub-City, Addis Ababa</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div style={{ borderTop: '1px solid rgba(245,236,215,.05)', padding: '18px clamp(20px,5vw,60px)' }}>
+          <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
+            <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.72rem', color: 'rgba(245,236,215,.2)' }}>
               © 2025 Birhan Coffee PLC. All rights reserved.
-            </div>
-            <div style={{ display: 'flex', gap: 12, marginTop: 4 }}>
-              <a href="mailto:info@birhancoffee.com" style={{ display: 'inline-flex', gap: 8, alignItems: 'center', textDecoration: 'none', color: 'rgba(245,236,215,0.75)', fontFamily: 'DM Sans,sans-serif', fontSize: '0.88rem' }} aria-label="Email">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display:'block' }}>
-                  <path d="M3 6.5C3 5.67 3.67 5 4.5 5H19.5C20.33 5 21 5.67 21 6.5V17.5C21 18.33 20.33 19 19.5 19H4.5C3.67 19 3 18.33 3 17.5V6.5Z" stroke="#F5ECD7" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M21 6.5L12 12.5L3 6.5" stroke="#F5ECD7" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                info@birhancoffee.com
-              </a>
-              <a href="tel:+2510911243099" style={{ display: 'inline-flex', gap: 8, alignItems: 'center', textDecoration: 'none', color: 'rgba(245,236,215,0.75)', fontFamily: 'DM Sans,sans-serif', fontSize: '0.88rem' }} aria-label="Phone">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 16.92V20C22 21.1 21.1 22 20 22C10.61 22 3 14.39 3 5C3 3.9 3.9 3 5 3H8.09C8.6 3 9.07 3.21 9.39 3.58L11.7 6.42C11.92 6.71 11.88 7.09 11.6 7.33L9.99 8.7C10.89 11.06 12.94 13.11 15.31 14.01L16.68 12.4C16.92 12.12 17.3 12.08 17.59 12.3L20.42 14.61C20.79 14.93 21 15.4 21 15.91V19C21 19.55 20.55 20 20 20H17.5" stroke="#F5ECD7" strokeWidth="0.9" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                +251 091 124 3099
-              </a>
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            {[
-              {
-                title: 'Facebook', href: 'https://facebook.com/birhancoffee', svg: (
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                    <path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h2V2z" stroke="#F5ECD7" strokeWidth={0.9} strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )
-              },
-              {
-                title: 'Instagram', href: 'https://instagram.com/birhancoffee', svg: (
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="#F5ECD7" strokeWidth={0.9} />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8" stroke="#F5ECD7" strokeWidth={0.9} strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M17.5 6.5h.01" stroke="#F5ECD7" strokeWidth={0.9} strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )
-              },
-              {
-                title: 'LinkedIn', href: 'https://linkedin.com/company/birhancoffee', svg: (
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2c-1.1 0-2 .9-2 2v7h-4V6h4v2" stroke="#F5ECD7" strokeWidth={0.9} strokeLinecap="round" strokeLinejoin="round" />
-                    <rect x="2" y="9" width="4" height="12" rx="1" stroke="#F5ECD7" strokeWidth={0.9} />
-                    <circle cx="4" cy="4" r="2" stroke="#F5ECD7" strokeWidth={0.9} />
-                  </svg>
-                )
-              },
-              {
-                title: 'Twitter', href: 'https://twitter.com/birhancoffee', svg: (
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.43 1s-1.72.9-2.67 1.3A4.48 4.48 0 0 0 16 1c-2.4 0-4.34 1.95-4.34 4.36 0 .34.04.67.11.99A12.78 12.78 0 0 1 3 2.16s-4 9 5 13c-1.7.47-3.5.56-5.2.2 3.3 2.1 7.2 2.6 11 1.6 8-2.2 11-9 11-16.5v-.75A7.72 7.72 0 0 0 23 3z" stroke="#F5ECD7" strokeWidth={0.9} strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )
-              },
-            ].map(s => (
-              <a key={s.title} href={s.href} target="_blank" rel="noreferrer" title={s.title} aria-label={s.title} style={{ display: 'inline-flex', width: 36, height: 36, borderRadius: 8, alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(245,236,215,0.04)', color: '#F5ECD7', textDecoration: 'none' }}
-                onMouseEnter={e => e.currentTarget.style.background='rgba(194,124,58,0.12)'} onMouseLeave={e => e.currentTarget.style.background='rgba(255,255,255,0.02)'}>
-                {s.svg}
-              </a>
-            ))}
+            </span>
+            <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.68rem', letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(194,124,58,.35)' }}>
+              Addis Ababa · Ethiopia · Direct Trade
+            </span>
           </div>
         </div>
       </footer>

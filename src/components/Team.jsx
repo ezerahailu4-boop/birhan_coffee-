@@ -52,15 +52,15 @@ export default function Team() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="team-grid-top">
           {TEAM_ROLES.slice(0, 3).map(member => <TeamCard key={member.role} member={member} />)}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 20, maxWidth: '66.66%', margin: '20px auto 0' }}>
+        <div className="team-grid-bot">
           {TEAM_ROLES.slice(3).map(member => <TeamCard key={member.role} member={member} />)}
         </div>
 
         {/* Commitment banner */}
-        <div style={{
+        <div className="team-banner" style={{
           marginTop: 60,
           background: 'linear-gradient(135deg, rgba(107,58,31,0.2), rgba(194,124,58,0.1))',
           border: '1px solid rgba(194,124,58,0.2)',
