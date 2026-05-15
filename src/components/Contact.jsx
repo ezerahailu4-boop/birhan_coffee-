@@ -210,6 +210,7 @@ export default function Contact() {
                 { label: '🗺️ Origins Map',    path: '/origins-map' },
                 { label: '✍️ Blog & Journal', path: '/blog' },
                 { label: '❓ FAQ',            path: '/faq' },
+                { label: '🌍 CSR Report',     path: '/csr-report' },
               ].map(l => (
                 <Link key={l.path} to={l.path} className="ft-link">
                   <span className="ft-arr">→</span>{l.label}

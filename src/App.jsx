@@ -23,6 +23,7 @@ import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import FAQ from './pages/FAQ';
 import Investor from './pages/Investor';
+import CSRReport from './pages/CSRReport';
 
 // WhatsApp redirect component
 function WhatsApp() {
@@ -87,6 +88,7 @@ export default function App() {
         <Route path="/blog"           element={<Blog />} />
         <Route path="/faq"            element={<FAQ />} />
         <Route path="/investor"        element={<Investor />} />
+        <Route path="/csr-report"       element={<CSRReport />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

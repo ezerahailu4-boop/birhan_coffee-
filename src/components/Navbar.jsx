@@ -30,6 +30,7 @@ const NAV_LINKS = [
     dropdown: [
       { label: 'Blog & Journal', path: '/blog', icon: '✍️', desc: 'Coffee stories & guides' },
       { label: 'FAQ',            path: '/faq',  icon: '❓', desc: 'Common questions' },
+      { label: 'CSR Report',     path: '/csr-report', icon: '🌍', desc: 'Annual impact report' },
     ],
   },
 ];
