@@ -193,6 +193,7 @@ export default function Contact() {
                 { label: 'Home',        path: '/' },
                 { label: 'Farm to Cup', path: '/farmtocup' },
                 { label: 'Our Coffees', path: '/coffees' },
+                { label: 'Wholesale',    path: '/wholesale' },
                 { label: 'Our Story',   path: '/story' },
                 { label: 'CSR',         path: '/csr' },
                 { label: 'Gallery',     path: '/gallery' },

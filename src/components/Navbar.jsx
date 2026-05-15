@@ -15,7 +15,14 @@ const NAV_LINKS = [
     ],
   },
   { label: 'Farm to Cup', path: '/farmtocup' },
-  { label: 'Coffees',     path: '/coffees' },
+  {
+    label: 'Coffees', path: '/coffees',
+    category: 'Our Products',
+    dropdown: [
+      { label: 'Our Coffees',   path: '/coffees',   icon: '☕', desc: 'All four origins & products' },
+      { label: 'Wholesale & Shipping', path: '/wholesale', icon: '📦', desc: 'B2B pricing & shipping calculator' },
+    ],
+  },
   {
     label: 'About Us', path: '/csr',
     category: 'Engagement & Conversions',
