@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.birhancoffee.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/coffees</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/story</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/farmtocup</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/csr</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/csr-report</loc><priority>0.8</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/contact</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/investor</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/testimonials</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/certifications</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/origins-map</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/gallery</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/blog</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/faq</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.birhancoffee.com/sample-request</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+</urlset>
