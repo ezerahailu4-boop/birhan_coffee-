@@ -22,6 +22,7 @@ import SampleRequest from './pages/SampleRequest';
 import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import FAQ from './pages/FAQ';
+import Investor from './pages/Investor';
 
 // WhatsApp redirect component
 function WhatsApp() {
@@ -85,6 +86,7 @@ export default function App() {
         {/* Contact dropdown */}
         <Route path="/blog"           element={<Blog />} />
         <Route path="/faq"            element={<FAQ />} />
+        <Route path="/investor"        element={<Investor />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

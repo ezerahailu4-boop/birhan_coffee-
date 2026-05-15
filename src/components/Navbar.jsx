@@ -10,6 +10,7 @@ const NAV_LINKS = [
       { label: 'Testimonials',    path: '/testimonials',   icon: '⭐', desc: 'What our partners say' },
       { label: 'Certifications',  path: '/certifications', icon: '🏆', desc: 'Awards & credentials' },
       { label: 'Origins Map',     path: '/origins-map',    icon: '🗺️', desc: 'Explore our regions' },
+      { label: 'Investor',        path: '/investor',       icon: '📊', desc: 'Financials & growth data' },
     ],
   },
   { label: 'Farm to Cup', path: '/farmtocup' },
