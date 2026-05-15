@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useLang, LANGUAGES } from '../lang.jsx';
 
 const NAV_LINKS = [
   { label: 'Home', path: '/' },
@@ -38,10 +39,12 @@ const NAV_LINKS = [
 export default function Navbar({ cartCount, onCartOpen }) {
   const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen,  setMenuOpen]  = useState(false);
-  const [activeDD,  setActiveDD]  = useState(null);   // desktop hover dropdown
-  const [mobileExp, setMobileExp] = useState(null);   // mobile expanded accordion
+  const [activeDD,  setActiveDD]  = useState(null);
+  const [mobileExp, setMobileExp] = useState(null);
+  const [langOpen,  setLangOpen]  = useState(false);
   const ddTimer = useRef(null);
   const location = useLocation();
+  const { lang, setLang, t } = useLang();
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 60);
@@ -150,6 +153,29 @@ export default function Navbar({ cartCount, onCartOpen }) {
               )}
             </div>
           ))}
+
+          {/* Language switcher */}
+          <div style={{ position: 'relative' }}>
+            <button onClick={() => setLangOpen(v => !v)}
+              style={{ background: 'none', border: '1px solid rgba(245,236,215,.2)', color: '#F5ECD7', padding: '7px 13px', borderRadius: 2, fontFamily: 'DM Sans,sans-serif', fontSize: '.7rem', letterSpacing: '.12em', textTransform: 'uppercase', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all .2s' }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(194,124,58,.5)'}
+              onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(245,236,215,.2)'}>
+              {LANGUAGES.find(l => l.code === lang)?.flag} {lang.toUpperCase()}
+              <span style={{ fontSize: '.5rem', opacity: .5 }}>▼</span>
+            </button>
+            {langOpen && (
+              <div style={{ position: 'absolute', top: 'calc(100% + 10px)', right: 0, background: 'linear-gradient(160deg,#1c1007,#110a05)', border: '1px solid rgba(194,124,58,.2)', borderRadius: 10, padding: 8, minWidth: 140, zIndex: 920, boxShadow: '0 20px 60px rgba(0,0,0,.9)', animation: 'ddIn .2s ease' }}>
+                {LANGUAGES.map(l => (
+                  <button key={l.code} onClick={() => { setLang(l.code); setLangOpen(false); }}
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 10, padding: '9px 14px', borderRadius: 7, background: lang === l.code ? 'rgba(194,124,58,.15)' : 'none', border: 'none', color: lang === l.code ? '#C27C3A' : 'rgba(245,236,215,.7)', fontFamily: 'DM Sans,sans-serif', fontSize: '.78rem', cursor: 'pointer', transition: 'background .15s', textAlign: 'left' }}
+                    onMouseEnter={e => { if (lang !== l.code) e.currentTarget.style.background = 'rgba(255,255,255,.05)'; }}
+                    onMouseLeave={e => { if (lang !== l.code) e.currentTarget.style.background = 'none'; }}>
+                    <span>{l.flag}</span> {l.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Cart */}
           <button onClick={onCartOpen} className="nb-cart"
@@ -260,6 +286,17 @@ export default function Navbar({ cartCount, onCartOpen }) {
                 )}
               </div>
             ))}
+
+            {/* Language switcher mobile */}
+            <div style={{ marginTop: 24, display: 'flex', gap: 8, animation: 'fadeUp .28s .32s both' }}>
+              {LANGUAGES.map(l => (
+                <button key={l.code} onClick={() => { setLang(l.code); setMenuOpen(false); }}
+                  style={{ flex: 1, padding: '10px 8px', borderRadius: 8, border: `1px solid ${lang === l.code ? 'rgba(194,124,58,.5)' : 'rgba(245,236,215,.1)'}`, background: lang === l.code ? 'rgba(194,124,58,.15)' : 'rgba(255,255,255,.03)', color: lang === l.code ? '#C27C3A' : 'rgba(245,236,215,.6)', fontFamily: 'DM Sans,sans-serif', fontSize: '.7rem', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                  <span style={{ fontSize: '1.2rem' }}>{l.flag}</span>
+                  <span>{l.label}</span>
+                </button>
+              ))}
+            </div>
 
             {/* Footer contact */}
             <div style={{ marginTop:30, display:'flex', flexDirection:'column', gap:10, animation:'fadeUp .28s .36s both' }}>

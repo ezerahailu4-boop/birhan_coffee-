@@ -1,10 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
+import { useLang } from '../lang.jsx';
 
 const HERO_VIDEO = '/back.mp4';
 
 export default function Hero({ onExplore }) {
   const [loaded, setLoaded] = useState(false);
   const videoRef = useRef(null);
+  const { t } = useLang();
 
   useEffect(() => {
     const img = new Image();
@@ -57,7 +59,7 @@ export default function Hero({ onExplore }) {
               color: '#F5ECD7', letterSpacing: '-0.02em',
               marginBottom: 8,
             }}>
-              From the
+              {t.heroLine1}
             </h1>
             <h1 style={{
               fontFamily: 'Cormorant Garamond, serif',
@@ -67,7 +69,7 @@ export default function Hero({ onExplore }) {
               color: '#C27C3A', letterSpacing: '-0.02em',
               marginBottom: 8,
             }}>
-              Ethiopian Highlands
+              {t.heroLine2}
             </h1>
             <h1 style={{
               fontFamily: 'Cormorant Garamond, serif',
@@ -76,7 +78,7 @@ export default function Hero({ onExplore }) {
               color: '#F5ECD7', letterSpacing: '-0.02em',
               marginBottom: 36,
             }}>
-              To Your Cup
+              {t.heroLine3}
             </h1>
           </div>
           <div style={{ animation: 'fadeUp 1s ease 0.6s both' }}>
@@ -87,14 +89,12 @@ export default function Hero({ onExplore }) {
               color: 'rgba(245,236,215,0.65)',
               lineHeight: 1.75, marginBottom: 44, maxWidth: 500,
             }}>
-              Birhan Coffee PLC — a top-100 Ethiopian coffee exporter — brings single-origin,
-              traceable specialty beans from four legendary regions directly to global markets.
-              Every sack carries the soul of the land.
+              {t.heroDesc}
             </p>
           </div>
           <div style={{ animation: 'fadeUp 1s ease 0.8s both', display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-            <button className="btn-primary" onClick={onExplore}>Explore Our Coffees →</button>
-            <button className="btn-outline" onClick={() => document.getElementById('farmtocup')?.scrollIntoView({ behavior: 'smooth' })}>Farm to Cup Journey</button>
+            <button className="btn-primary" onClick={onExplore}>{t.exploreCoffees}</button>
+            <button className="btn-outline" onClick={() => document.getElementById('farmtocup')?.scrollIntoView({ behavior: 'smooth' })}>{t.farmJourney}</button>
           </div>
 
           {/* Stats strip */}

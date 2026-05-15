@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLang } from '../lang.jsx';
 
 const CONTACT_BG = 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=70&fit=crop';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '', interest: '' });
   const [sent, setSent] = useState(false);
+  const { t } = useLang();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -42,9 +44,9 @@ export default function Contact() {
         <div className="container" style={{ position: 'relative' }}>
           <div className="contact-grid">
             <div>
-              <p className="section-label">Get In Touch</p>
+              <p className="section-label">{t.getInTouch}</p>
               <h2 className="section-title" style={{ marginBottom: 24 }}>
-                Let's Talk <em>Coffee</em>
+                {t.letsTalk} <em>{t.coffee}</em>
               </h2>
               <div className="divider" />
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 48, fontSize: '0.95rem' }}>
@@ -87,23 +89,23 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                     <div>
-                      <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>Your Name *</label>
+                      <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>{t.yourName} *</label>
                       <input required style={inputStyle} placeholder="Full Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                         onFocus={e => e.target.style.borderColor = '#C27C3A'} onBlur={e => e.target.style.borderColor = 'rgba(245,236,215,0.15)'} />
                     </div>
                     <div>
-                      <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>Email *</label>
+                      <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>{t.email} *</label>
                       <input required type="email" style={inputStyle} placeholder="email@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
                         onFocus={e => e.target.style.borderColor = '#C27C3A'} onBlur={e => e.target.style.borderColor = 'rgba(245,236,215,0.15)'} />
                     </div>
                   </div>
                   <div>
-                    <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>Company / Organisation</label>
+                    <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>{t.company}</label>
                     <input style={inputStyle} placeholder="Your company name" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })}
                       onFocus={e => e.target.style.borderColor = '#C27C3A'} onBlur={e => e.target.style.borderColor = 'rgba(245,236,215,0.15)'} />
                   </div>
                   <div>
-                    <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>I'm interested in</label>
+                    <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>{t.interestedIn}</label>
                     <select style={{ ...inputStyle, background: 'rgba(12,9,8,0.9)' }} value={form.interest} onChange={e => setForm({ ...form, interest: e.target.value })}>
                       <option value="">Select an option...</option>
                       <option>Wholesale / Bulk Green Beans</option>
@@ -114,12 +116,12 @@ export default function Contact() {
                     </select>
                   </div>
                   <div>
-                    <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>Message *</label>
+                    <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.4)', display: 'block', marginBottom: 8 }}>{t.message} *</label>
                     <textarea required rows={5} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell us about your requirements..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                       onFocus={e => e.target.style.borderColor = '#C27C3A'} onBlur={e => e.target.style.borderColor = 'rgba(245,236,215,0.15)'} />
                   </div>
                   <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '16px' }}>
-                    Send Message ✦
+                    {t.sendMessage}
                   </button>
                 </form>
               )}
@@ -246,13 +248,13 @@ export default function Contact() {
         <div style={{ borderTop: '1px solid rgba(245,236,215,.05)', padding: '18px clamp(20px,5vw,60px)' }}>
           <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
             <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.72rem', color: 'rgba(245,236,215,.2)' }}>
-              © 2025 Birhan Coffee PLC. All rights reserved.
+              {t.allRights}
             </span>
             <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.68rem', letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(194,124,58,.35)' }}>
-              Developed by Ezera Hailu & Matiyas Tesfaye
+              {t.developedBy}
             </span>
             <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.68rem', letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(194,124,58,.35)' }}>
-              Addis Ababa · Ethiopia · Direct Trade
+              {t.tagline}
             </span>
           </div>
         </div>
