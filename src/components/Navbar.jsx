@@ -310,8 +310,8 @@ export default function Navbar({ cartCount, onCartOpen }) {
               <a href="tel:+2510911243099" style={{ fontFamily:'DM Sans,sans-serif', fontSize:'.67rem', letterSpacing:'.14em', color:'rgba(194,124,58,.65)', textTransform:'uppercase', textDecoration:'none', display:'flex', alignItems:'center', gap:8 }}>
                 <span>📞</span> +251 091 124 3099
               </a>
-              <a href="mailto:info@birhancoffee.com" style={{ fontFamily:'DM Sans,sans-serif', fontSize:'.67rem', letterSpacing:'.14em', color:'rgba(194,124,58,.65)', textTransform:'uppercase', textDecoration:'none', display:'flex', alignItems:'center', gap:8 }}>
-                <span>✉️</span> info@birhancoffee.com
+              <a href="mailto:Birhancoffee24@gmail.com" style={{ fontFamily:'DM Sans,sans-serif', fontSize:'.67rem', letterSpacing:'.14em', color:'rgba(194,124,58,.65)', textTransform:'uppercase', textDecoration:'none', display:'flex', alignItems:'center', gap:8 }}>
+                <span>✉️</span> Birhancoffee24@gmail.com
               </a>
             </div>
           </div>
@@ -320,3 +320,4 @@ export default function Navbar({ cartCount, onCartOpen }) {
     </>
   );
 }
+

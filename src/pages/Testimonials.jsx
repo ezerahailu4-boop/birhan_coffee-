@@ -64,9 +64,10 @@ export default function Testimonials() {
         <div style={{ textAlign: 'center', marginTop: 72, padding: '48px', background: 'rgba(194,124,58,0.05)', border: '1px solid rgba(194,124,58,0.12)', borderRadius: 12 }}>
           <p style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 300, color: '#F5ECD7', marginBottom: 12 }}>Become our next <em style={{ color: '#D4A55A' }}>partner roaster</em></p>
           <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.45)', marginBottom: 28, fontSize: '0.88rem' }}>Join roasters in 15+ countries who trust Birhan for their Ethiopian single-origin.</p>
-          <a href="mailto:info@birhancoffee.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', border: 'none', color: '#F5ECD7', padding: '14px 36px', borderRadius: 2, fontFamily: 'DM Sans,sans-serif', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>Request Samples →</a>
+          <a href="mailto:Birhancoffee24@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', border: 'none', color: '#F5ECD7', padding: '14px 36px', borderRadius: 2, fontFamily: 'DM Sans,sans-serif', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}>Request Samples →</a>
         </div>
       </div>
     </div>
   );
 }
+

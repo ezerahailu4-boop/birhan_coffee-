@@ -1,3 +1,5 @@
+import { useLang } from '../lang.jsx';
+
 const CSR_BG = 'https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=1600&q=70&fit=crop';
 
 const CSR_INITIATIVES = [
@@ -43,6 +45,7 @@ const IMPACT = [
 ];
 
 export default function CSR() {
+  const { t } = useLang();
   return (
     <section id="csr" style={{ position: 'relative' }}>
 
@@ -59,13 +62,13 @@ export default function CSR() {
           background: 'linear-gradient(135deg, rgba(7,5,10,0.92) 0%, rgba(7,5,10,0.7) 100%)',
         }} />
         <div className="container" style={{ position: 'relative', textAlign: 'center' }}>
-          <p className="section-label">Giving Back</p>
+          <p className="section-label">{t.givingBack}</p>
           <h2 className="section-title" style={{ marginBottom: 20 }}>
-            Corporate <em>Social Responsibility</em>
+            {t.csrTitle} <em>{t.csrTitleItalic}</em>
           </h2>
           <div className="divider center" />
           <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', maxWidth: 600, margin: '0 auto 60px', lineHeight: 1.8 }}>
-            Growth that isn't shared isn't growth at all. Birhan Coffee's CSR programme at Saylem and beyond invests directly in the infrastructure, education, and livelihoods of the communities that make our coffee possible.
+            {t.csrDesc}
           </p>
           {/* Impact stats */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: 64, flexWrap: 'wrap' }} className="csr-impact">
@@ -116,8 +119,8 @@ export default function CSR() {
       <div style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)', background: '#07050a' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 60 }}>
-            <p className="section-label">Our Foundation</p>
-            <h2 className="section-title">Vision · Mission · <em>Values</em></h2>
+            <p className="section-label">{t.ourFoundation}</p>
+            <h2 className="section-title">{t.vmvTitle} <em>{t.vmvItalic}</em></h2>
             <div className="divider center" />
           </div>
           <div className="vmv-grid">
@@ -181,3 +184,4 @@ export default function CSR() {
     </section>
   );
 }
+

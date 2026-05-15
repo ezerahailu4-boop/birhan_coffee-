@@ -56,7 +56,7 @@ export default function Contact() {
                 {[
                   { icon: '📍', label: 'Address', val: 'Bole Sub-City, Addis Ababa, Ethiopia' },
                   { icon: '📞', label: 'Phone', val: '+251 091 124 3099' },
-                  { icon: '✉️', label: 'Email', val: 'info@birhancoffee.com' },
+                  { icon: '✉️', label: 'Email', val: 'Birhancoffee24@gmail.com' },
                   { icon: '🌐', label: 'Website', val: 'www.birhancoffee.com' },
                 ].map(({ icon, label, val }) => (
                   <div key={label} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
@@ -236,7 +236,7 @@ export default function Contact() {
                 </Link>
               ))}
               <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <a href="mailto:info@birhancoffee.com" className="ft-link">📧 info@birhancoffee.com</a>
+                <a href="mailto:Birhancoffee24@gmail.com" className="ft-link">📧 Birhancoffee24@gmail.com</a>
                 <a href="tel:+2510911243099" className="ft-link">📞 +251 091 124 3099</a>
                 <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.82rem', color: 'rgba(245,236,215,.35)', display:'flex', gap:7, alignItems:'center' }}>📍 Bole Sub-City, Addis Ababa</span>
               </div>
@@ -263,3 +263,5 @@ export default function Contact() {
     </section>
   );
 }
+
+

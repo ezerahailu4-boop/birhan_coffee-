@@ -1,3 +1,5 @@
+import { useLang } from '../lang.jsx';
+
 const TEAM_ROLES = [
   {
     role: 'Agronomists',
@@ -37,6 +39,7 @@ const TEAM_ROLES = [
 ];
 
 export default function Team() {
+  const { t } = useLang();
   return (
     <section id="team" style={{
       padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,60px)',
@@ -44,11 +47,11 @@ export default function Team() {
     }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 72 }}>
-          <p className="section-label">The People Behind the Cup</p>
-          <h2 className="section-title">Our <em>Team of Experts</em></h2>
+          <p className="section-label">{t.teamLabel}</p>
+          <h2 className="section-title">{t.teamTitle} <em>{t.teamTitleItalic}</em></h2>
           <div className="divider center" />
           <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.5)', maxWidth: 500, margin: '0 auto', lineHeight: 1.8 }}>
-            Every step of the farm-to-export journey is overseen by dedicated specialists who share a passion for Ethiopian coffee excellence.
+            {t.teamDesc}
           </p>
         </div>
 
@@ -69,10 +72,10 @@ export default function Team() {
         }}>
           <div style={{ position: 'absolute', top: -40, right: -40, width: 160, height: 160, borderRadius: '50%', background: 'rgba(194,124,58,0.08)' }} />
           <p style={{ fontFamily: 'Cormorant Garamond,serif', fontStyle: 'italic', fontSize: 'clamp(1.4rem,3vw,2rem)', color: '#D4A55A', lineHeight: 1.5, maxWidth: 700, margin: '0 auto' }}>
-            "At Birhan Coffee, we are committed to producing and delivering the finest Ethiopian coffee beans while supporting local communities and promoting sustainable agricultural practices."
+            {t.teamQuote}
           </p>
           <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.35)', marginTop: 20 }}>
-            — Birhanu Lemi, Founder & CEO
+            {t.teamQuoteAuthor}
           </p>
         </div>
       </div>
@@ -102,3 +105,4 @@ function TeamCard({ member }) {
     </div>
   );
 }
+

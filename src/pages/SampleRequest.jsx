@@ -16,7 +16,7 @@ export default function SampleRequest() {
   const handleSubmit = () => {
     const sub = `Sample Request — ${form.origins.join(', ')} — ${form.company}`;
     const body = `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\nCountry: ${form.country}\nOrigins: ${form.origins.join(', ')}\nFormats: ${form.formats.join(', ')}\nVolume: ${form.volume}\n\nMessage:\n${form.message}`;
-    window.location.href = `mailto:info@birhancoffee.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:Birhancoffee24@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;
     setSent(true);
   };
 
@@ -121,3 +121,4 @@ export default function SampleRequest() {
     </div>
   );
 }
+

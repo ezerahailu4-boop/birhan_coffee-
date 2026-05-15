@@ -351,3 +351,4 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   .bg-fixed { background-attachment: scroll !important; }
 }
+

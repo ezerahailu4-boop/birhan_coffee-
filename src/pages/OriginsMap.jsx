@@ -149,7 +149,7 @@ export default function OriginsMap() {
               </div>
             </div>
 
-            <a href="mailto:info@birhancoffee.com?subject=Sample Request — {active.name}" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, background: `linear-gradient(135deg,${active.color},#C27C3A)`, border: 'none', color: '#F5ECD7', padding: '14px 28px', borderRadius: 8, fontFamily: 'DM Sans,sans-serif', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none', transition: 'opacity 0.2s' }}>
+            <a href="mailto:Birhancoffee24@gmail.com?subject=Sample Request — {active.name}" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, background: `linear-gradient(135deg,${active.color},#C27C3A)`, border: 'none', color: '#F5ECD7', padding: '14px 28px', borderRadius: 8, fontFamily: 'DM Sans,sans-serif', fontSize: '0.72rem', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none', transition: 'opacity 0.2s' }}>
               Request {active.name} Sample →
             </a>
           </div>
@@ -169,3 +169,4 @@ export default function OriginsMap() {
     </div>
   );
 }
+

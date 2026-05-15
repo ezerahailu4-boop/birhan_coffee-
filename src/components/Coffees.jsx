@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLang } from '../lang.jsx';
 
 const REGIONS = [
   {
@@ -61,6 +62,7 @@ const PRODUCTS = [
 
 export default function Coffees({ onAddToCart }) {
   const [activeRegion, setActiveRegion] = useState(null);
+  const { t } = useLang();
 
   return (
     <section id="coffees" style={{
@@ -71,11 +73,11 @@ export default function Coffees({ onAddToCart }) {
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 80 }}>
-          <p className="section-label">Single-Origin Specialty</p>
-          <h2 className="section-title">Our <em>Coffees</em></h2>
+          <p className="section-label">{t.singleOriginLabel}</p>
+          <h2 className="section-title">{t.ourCoffeesTitle} <em>{t.ourCoffeesItalic || 'Coffees'}</em></h2>
           <div className="divider center" />
           <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.5)', maxWidth: 520, margin: '0 auto', lineHeight: 1.8 }}>
-            Four distinct Ethiopian origins. Fully traceable. Ethically sourced. Premium Arabica at its finest.
+            {t.coffeesDesc}
           </p>
         </div>
 
@@ -157,13 +159,13 @@ export default function Coffees({ onAddToCart }) {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.6rem', color: '#C27C3A' }}>${r.price.toFixed(2)}</div>
-                    <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.6rem', color: 'rgba(245,236,215,0.3)', letterSpacing: '0.1em' }}>per 250g bag</div>
+                    <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.6rem', color: 'rgba(245,236,215,0.3)', letterSpacing: '0.1em' }}>{t.perBagLabel}</div>
                   </div>
                   <button
                     className="btn-primary"
                     style={{ padding: '10px 20px', fontSize: '0.65rem' }}
                     onClick={() => onAddToCart({ id: r.id, name: `${r.name} Coffee`, price: r.price, emoji: '☕' })}
-                  >Add to Cart</button>
+                  >{t.addToCartBtn}</button>
                 </div>
               </div>
             </div>
@@ -172,9 +174,9 @@ export default function Coffees({ onAddToCart }) {
 
         {/* Products */}
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <p className="section-label">Value-Added Products</p>
+          <p className="section-label">{t.valueAdded}</p>
           <h3 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '2.4rem', fontWeight: 300, color: '#F5ECD7' }}>
-            Beyond the <em>Green Bean</em>
+            {t.beyondGreenBean} <em>{t.beyondGreenBeanItalic || 'Green Bean'}</em>
           </h3>
         </div>
         <div className="coffees-products">
@@ -197,7 +199,7 @@ export default function Coffees({ onAddToCart }) {
                   className="btn-primary"
                   style={{ padding: '8px 16px', fontSize: '0.62rem' }}
                   onClick={() => onAddToCart({ id: `prod-${p.id}`, name: p.name, price: p.price, emoji: p.emoji })}
-                >Add</button>
+                >{t.addBtn}</button>
               </div>
             </div>
           ))}
@@ -206,16 +208,16 @@ export default function Coffees({ onAddToCart }) {
         {/* Wholesale CTA banner */}
         <div style={{ marginTop: 80, background: 'linear-gradient(135deg,rgba(107,58,31,.25),rgba(194,124,58,.08))', border: '1px solid rgba(194,124,58,.2)', borderRadius: 16, padding: 'clamp(32px,5vw,56px)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
           <div>
-            <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', letterSpacing: '.22em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 10 }}>B2B & Wholesale</p>
+            <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', letterSpacing: '.22em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 10 }}>{t.b2bLabel}</p>
             <h3 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(1.6rem,3vw,2.4rem)', fontWeight: 300, color: '#F5ECD7', marginBottom: 10 }}>
-              Looking to order in <em style={{ color: '#D4A55A' }}>bulk?</em>
+              {t.bulkTitle} <em style={{ color: '#D4A55A' }}>{t.bulkItalic}</em>
             </h3>
             <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,.5)', fontSize: '.88rem', maxWidth: 480, lineHeight: 1.7 }}>
-              View our wholesale pricing tiers, use our interactive shipping calculator, and get a confirmed quote — all in one place.
+              {t.bulkDesc}
             </p>
           </div>
           <Link to="/wholesale" className="btn-primary" style={{ textDecoration: 'none', whiteSpace: 'nowrap', padding: '15px 36px' }}>
-            View Wholesale & Shipping →
+            {t.viewWholesale}
           </Link>
         </div>
 
@@ -223,3 +225,4 @@ export default function Coffees({ onAddToCart }) {
     </section>
   );
 }
+

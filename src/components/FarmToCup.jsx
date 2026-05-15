@@ -52,8 +52,10 @@ export const STEPS = [
 ];
 
 import { Link } from 'react-router-dom';
+import { useLang } from '../lang.jsx';
 
 export default function FarmToCup() {
+  const { t } = useLang();
   return (
     <section id="farmtocup" style={{
       padding: 'clamp(80px,10vw,140px) clamp(16px,5vw,60px)',
@@ -69,11 +71,11 @@ export default function FarmToCup() {
 
       <div className="container" style={{ position: 'relative' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(48px,8vw,80px)' }}>
-          <p className="section-label">The Journey</p>
-          <h2 className="section-title">From <em>Farm to Cup</em></h2>
+          <p className="section-label">{t.theJourney}</p>
+          <h2 className="section-title">{t.farmToCupTitle} <em>{t.farmToCupItalic}</em></h2>
           <div className="divider center" />
           <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.5)', maxWidth: 540, margin: '0 auto', lineHeight: 1.75 }}>
-            Every cup of Birhan Coffee carries a story of careful stewardship across five critical stages — from seed to sack to your morning ritual.
+            {t.farmToCupDesc}
           </p>
         </div>
 
@@ -134,6 +136,7 @@ export default function FarmToCup() {
 }
 
 export function StepContent({ step, align }) {
+  const { t } = useLang();
   return (
     <div style={{ textAlign: align }}>
       <div style={{
@@ -160,7 +163,7 @@ export function StepContent({ step, align }) {
         display: 'flex', alignItems: 'center', gap: 6,
         justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
       }}>
-        View details →
+        {t.viewDetails}
       </p>
     </div>
   );
@@ -188,3 +191,4 @@ export function StepPhoto({ step }) {
     </div>
   );
 }
+

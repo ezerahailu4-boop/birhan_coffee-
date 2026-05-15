@@ -110,7 +110,7 @@ export default function Investor() {
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,.45)', marginBottom: 28, fontSize: '.88rem' }}>
                 We provide full financial documentation, audited reports, and farm-level traceability to verified partners.
               </p>
-              <a href="mailto:info@birhancoffee.com?subject=Investor Enquiry — Birhan Coffee"
+              <a href="mailto:Birhancoffee24@gmail.com?subject=Investor Enquiry — Birhan Coffee"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', color: '#F5ECD7', padding: '14px 36px', borderRadius: 4, fontFamily: 'DM Sans,sans-serif', fontSize: '.72rem', fontWeight: 500, letterSpacing: '.2em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Request Investor Pack →
               </a>
@@ -175,7 +175,7 @@ export default function Investor() {
                   Complete audited financial statements, export documentation, and due diligence packs are available to verified investors and trade partners upon request.
                 </p>
               </div>
-              <a href="mailto:info@birhancoffee.com?subject=Financial Documents Request" style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', color: '#F5ECD7', padding: '10px 20px', borderRadius: 4, fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', fontWeight: 500, letterSpacing: '.15em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+              <a href="mailto:Birhancoffee24@gmail.com?subject=Financial Documents Request" style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', color: '#F5ECD7', padding: '10px 20px', borderRadius: 4, fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', fontWeight: 500, letterSpacing: '.15em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>
                 Request →
               </a>
             </div>
@@ -199,7 +199,7 @@ export default function Investor() {
             </div>
             <div style={{ textAlign: 'center', padding: '40px', background: 'rgba(194,124,58,.05)', border: '1px solid rgba(194,124,58,.12)', borderRadius: 16 }}>
               <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,.45)', marginBottom: 20, fontSize: '.88rem' }}>Need certification documents for due diligence? We provide full documentation to verified partners.</p>
-              <a href="mailto:info@birhancoffee.com?subject=Certification Documents Request" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', color: '#F5ECD7', padding: '13px 32px', borderRadius: 4, fontFamily: 'DM Sans,sans-serif', fontSize: '.7rem', fontWeight: 500, letterSpacing: '.18em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <a href="mailto:Birhancoffee24@gmail.com?subject=Certification Documents Request" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', color: '#F5ECD7', padding: '13px 32px', borderRadius: 4, fontFamily: 'DM Sans,sans-serif', fontSize: '.7rem', fontWeight: 500, letterSpacing: '.18em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 Request Documents →
               </a>
             </div>
@@ -246,3 +246,4 @@ export default function Investor() {
     </div>
   );
 }
+

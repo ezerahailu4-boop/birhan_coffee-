@@ -191,7 +191,7 @@ export default function Wholesale() {
                 * Indicative estimate only. Final pricing confirmed by our team based on current market rates, exact destination, and agreed incoterms.
               </p>
 
-              <a href={`mailto:info@birhancoffee.com?subject=Wholesale Quote — ${bags} bags to ${region.region}&body=Hi, I'd like a confirmed quote for ${bags} bags (${bags * kgPerBag}kg) shipped to ${region.region} on ${region.incoterm} terms.`}
+              <a href={`mailto:Birhancoffee24@gmail.com?subject=Wholesale Quote — ${bags} bags to ${region.region}&body=Hi, I'd like a confirmed quote for ${bags} bags (${bags * kgPerBag}kg) shipped to ${region.region} on ${region.incoterm} terms.`}
                 className="btn-primary" style={{ justifyContent: 'center', textDecoration: 'none', padding: '15px', fontSize: '.72rem' }}>
                 Request Confirmed Quote →
               </a>
@@ -230,7 +230,7 @@ export default function Wholesale() {
             Our team responds within 24 hours with a confirmed quote and sample offer.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="mailto:info@birhancoffee.com?subject=Wholesale Enquiry — Birhan Coffee"
+            <a href="mailto:Birhancoffee24@gmail.com?subject=Wholesale Enquiry — Birhan Coffee"
               className="btn-primary" style={{ textDecoration: 'none' }}>
               ✉️ Email Our Team
             </a>
@@ -245,3 +245,4 @@ export default function Wholesale() {
     </div>
   );
 }
+

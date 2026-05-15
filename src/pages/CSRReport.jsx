@@ -216,7 +216,7 @@ export default function CSRReport() {
 
         {/* CTA */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16 }}>
-          <a href="mailto:info@birhancoffee.com?subject=CSR Report Request — Birhan Coffee"
+          <a href="mailto:Birhancoffee24@gmail.com?subject=CSR Report Request — Birhan Coffee"
             style={{ display: 'flex', flexDirection: 'column', gap: 8, background: 'rgba(194,124,58,.06)', border: '1px solid rgba(194,124,58,.15)', borderRadius: 12, padding: '28px', textDecoration: 'none', transition: 'border-color .3s' }}
             onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(194,124,58,.4)'}
             onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(194,124,58,.15)'}>
@@ -246,3 +246,4 @@ export default function CSRReport() {
     </div>
   );
 }
+

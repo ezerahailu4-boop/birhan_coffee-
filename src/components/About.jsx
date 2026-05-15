@@ -1,7 +1,10 @@
+import { useLang } from '../lang.jsx';
+
 const ABOUT_BG = 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80&fit=crop';
 const FOUNDER_IMG = '/q12.jpg';
 
 export default function About() {
+  const { t } = useLang();
   return (
     <>
       {/* About Section */}
@@ -40,21 +43,17 @@ export default function About() {
 
             {/* Right: text */}
             <div>
-              <p className="section-label">Our Company</p>
-              <h2 className="section-title" style={{ marginBottom: 24 }}>Five Years of <em>Purposeful Growth</em></h2>
+              <p className="section-label">{t.ourCompanyLabel}</p>
+              <h2 className="section-title" style={{ marginBottom: 24 }}>{t.aboutTitle1} <em>{t.aboutTitle2}</em></h2>
               <div className="divider" />
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>
-                Birhan Coffee PLC was established in 2019 with a simple but powerful conviction: exceptional Ethiopian coffee, delivered with integrity. Over five years we built strong relationships with over 200 local farmers, invested in sustainable farming, and opened our modern processing facility in Sebeta.
-              </p>
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 32, fontSize: '0.95rem' }}>
-                By 2022 we had expanded to international markets, earning recognition in the top 100 Ethiopian coffee exporters. Today, Birhan Coffee is synonymous with quality, sustainability, and community empowerment.
-              </p>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>{t.aboutP1}</p>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 32, fontSize: '0.95rem' }}>{t.aboutP2}</p>
               <div className="about-values">
                 {[
-                  { icon: '🌱', label: 'Sustainable Farming', desc: 'Fair trade & eco-conscious practices at every stage' },
-                  { icon: '🤝', label: 'Direct Relationships', desc: '200+ farming families paid premium fair prices' },
-                  { icon: '🏆', label: 'Recognised Quality', desc: 'Top 100 Ethiopian coffee exporter since 2022' },
-                  { icon: '🌍', label: 'Global Reach', desc: 'Exporting premium Arabica to international markets' },
+                  { icon: '🌱', label: t.sustainableFarming, desc: t.sustainableFarmingDesc },
+                  { icon: '🤝', label: t.directRelationships, desc: t.directRelationshipsDesc },
+                  { icon: '🏆', label: t.recognisedQuality, desc: t.recognisedQualityDesc },
+                  { icon: '🌍', label: t.globalReach, desc: t.globalReachDesc },
                 ].map(v => (
                   <div key={v.label} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(245,236,215,0.07)', borderRadius: 4, padding: 20 }}>
                     <div style={{ fontSize: '1.3rem', marginBottom: 8 }}>{v.icon}</div>
@@ -63,7 +62,7 @@ export default function About() {
                   </div>
                 ))}
               </div>
-              <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>Work With Us →</button>
+              <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>{t.workWithUsCta}</button>
             </div>
           </div>
         </div>
@@ -77,21 +76,15 @@ export default function About() {
         <div className="container">
           <div className="founder-grid">
             <div>
-              <p className="section-label">Our Founder</p>
-              <h2 className="section-title" style={{ marginBottom: 8 }}>Birhanu <em>Lemi</em></h2>
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 24 }}>Founder & CEO, Birhan Coffee PLC</p>
+              <p className="section-label">{t.ourFounder}</p>
+              <h2 className="section-title" style={{ marginBottom: 8 }}>{t.founderTitle} <em>{t.founderTitleItalic}</em></h2>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 24 }}>{t.founderRole}</p>
               <div className="divider" />
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>
-                Born and raised in the lush highlands of Ethiopia, Birhanu Lemi spent 25 years building successful businesses before channelling his passion for his homeland's most famous export into Birhan Coffee PLC.
-              </p>
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>
-                His founding vision was to blend Ethiopia's ancient coffee traditions with modern processing standards, paying fair prices that genuinely transform farmers' lives. Under his leadership, Birhan Coffee became a top-100 Ethiopian coffee exporter in just three years.
-              </p>
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 36, fontSize: '0.95rem' }}>
-                Birhanu has received multiple national and international awards for sustainable farming and fair trade.
-              </p>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>{t.founderP1}</p>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 20, fontSize: '0.95rem' }}>{t.founderP2}</p>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.6)', lineHeight: 1.8, marginBottom: 36, fontSize: '0.95rem' }}>{t.founderP3}</p>
               <blockquote style={{ fontFamily: 'Cormorant Garamond,serif', fontStyle: 'italic', fontSize: 'clamp(1.1rem,2vw,1.4rem)', color: 'rgba(212,165,90,0.85)', lineHeight: 1.5, borderLeft: '2px solid #C27C3A', paddingLeft: 24 }}>
-                "Every cup of Birhan Coffee must not only taste exceptional — it must support a brighter future for Ethiopian farmers."
+                {t.founderQuote}
               </blockquote>
             </div>
             <div style={{ position: 'relative' }}>
@@ -105,7 +98,7 @@ export default function About() {
                 borderRadius: 4, padding: '20px 24px', minWidth: 160,
               }}>
                 <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '2.2rem', fontWeight: 700, color: '#F5ECD7', lineHeight: 1 }}>25+</div>
-                <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.8)', marginTop: 4 }}>Years in<br/>Business</div>
+                <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.8)', marginTop: 4 }}>{t.yearsInBusiness}</div>
               </div>
             </div>
           </div>
@@ -114,3 +107,4 @@ export default function About() {
     </>
   );
 }
+

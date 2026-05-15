@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 const FAQS = [
   { cat:'Ordering', q:'What is your minimum order quantity?', a:'For samples we have no minimum — we ship free 250g samples to verified roasters worldwide. For commercial orders, our minimum is typically 1 bag (60kg green beans) or 5 retail bags per SKU. Wholesale and import quantities are negotiated directly.' },
-  { cat:'Ordering', q:'How do I place a wholesale or import order?', a:'Contact us directly at info@birhancoffee.com or call +251 091 124 3099. Our team will discuss your volume needs, preferred origins, processing methods, and provide a tailored quote within 24 hours.' },
+  { cat:'Ordering', q:'How do I place a wholesale or import order?', a:'Contact us directly at Birhancoffee24@gmail.com or call +251 091 124 3099. Our team will discuss your volume needs, preferred origins, processing methods, and provide a tailored quote within 24 hours.' },
   { cat:'Ordering', q:'Do you ship to my country?', a:'Yes. We export worldwide from Addis Ababa with full documentation. We currently ship to Europe, North America, Asia, the Middle East, and Africa. Contact us to confirm lead times and incoterms for your region.' },
   { cat:'Products', q:'What products do you offer?', a:'We offer four formats: green (raw) beans for roasters, roasted whole beans, ground coffee, and Nespresso-compatible capsules. All are available in our four origins: Yirgacheffe, Masha, Jimma, and Saylem.' },
   { cat:'Products', q:'What processing methods are available?', a:'Washed, natural, and honey processing are all available. Our Yirgacheffe facility handles all three methods. Our Sebeta centre specialises in precision wet and dry milling. We can discuss specific processing preferences for large orders.' },
   { cat:'Products', q:'What is the cup score of your coffees?', a:'Every lot is cupped by our certified Q-graders on-site. We only approve and ship lots that score 84 or above on the SCA scale — the international specialty threshold. Our average export score is 85.5.' },
   { cat:'Quality', q:'How do you ensure consistent quality?', a:'Multiple quality checkpoints at every stage: selective hand-picking in the field, daily monitoring during processing and drying, full Q-grade cupping of every lot, moisture and density checks at milling, and pre-shipment sampling. Consistency is our baseline, not our target.' },
-  { cat:'Quality', q:'Can I get samples before placing an order?', a:'Yes — we encourage it. We ship free samples to verified roasters and importers. Use our Sample Request form or email info@birhancoffee.com with your company details. Samples are typically despatched within 5 business days.' },
+  { cat:'Quality', q:'Can I get samples before placing an order?', a:'Yes — we encourage it. We ship free samples to verified roasters and importers. Use our Sample Request form or email Birhancoffee24@gmail.com with your company details. Samples are typically despatched within 5 business days.' },
   { cat:'Quality', q:'Do you provide green bean data and traceability reports?', a:'Yes. Every export lot comes with full traceability documentation: farm/cooperative source, altitude, processing method, harvest date, cup score, moisture content, and screen size. We can also provide farmer-level data for verified partners.' },
   { cat:'Logistics', q:'What shipping and export documents do you provide?', a:'We provide a full documentation package with every shipment: Phytosanitary Certificate, ICO Certificate of Origin, commercial invoice, packing list, bill of lading, and any additional certifications required by your country. Our logistics team handles all customs compliance.' },
   { cat:'Logistics', q:'What are your available incoterms?', a:'We offer FOB (Addis Ababa), CIF (to your destination port), and DAP (delivered to your address). Our most common terms are FOB and CIF. Discuss with our team to find the best option for your situation.' },
@@ -73,7 +73,7 @@ export default function FAQ() {
           <p style={{ fontFamily:'Cormorant Garamond,serif', fontSize:'clamp(1.4rem,3vw,2rem)', fontWeight:300, color:'#F5ECD7', marginBottom:10 }}>Still have a <em style={{ color:'#D4A55A' }}>question?</em></p>
           <p style={{ fontFamily:'DM Sans,sans-serif', fontWeight:300, color:'rgba(245,236,215,0.45)', marginBottom:24, fontSize:'0.86rem' }}>Our team responds within 24 hours, every day of the week.</p>
           <div style={{ display:'flex', gap:12, justifyContent:'center', flexWrap:'wrap' }}>
-            <a href="mailto:info@birhancoffee.com" style={{ display:'inline-flex', alignItems:'center', gap:8, background:'linear-gradient(135deg,#6B3A1F,#C27C3A)', border:'none', color:'#F5ECD7', padding:'13px 28px', borderRadius:4, fontFamily:'DM Sans,sans-serif', fontSize:'0.7rem', fontWeight:500, letterSpacing:'0.18em', textTransform:'uppercase', textDecoration:'none' }}>✉️ Email Us</a>
+            <a href="mailto:Birhancoffee24@gmail.com" style={{ display:'inline-flex', alignItems:'center', gap:8, background:'linear-gradient(135deg,#6B3A1F,#C27C3A)', border:'none', color:'#F5ECD7', padding:'13px 28px', borderRadius:4, fontFamily:'DM Sans,sans-serif', fontSize:'0.7rem', fontWeight:500, letterSpacing:'0.18em', textTransform:'uppercase', textDecoration:'none' }}>✉️ Email Us</a>
             <a href="tel:+251091124309" style={{ display:'inline-flex', alignItems:'center', gap:8, background:'none', border:'1px solid rgba(245,236,215,0.2)', color:'#F5ECD7', padding:'13px 28px', borderRadius:4, fontFamily:'DM Sans,sans-serif', fontSize:'0.7rem', fontWeight:500, letterSpacing:'0.18em', textTransform:'uppercase', textDecoration:'none' }}>📞 Call Us</a>
           </div>
         </div>
@@ -81,3 +81,4 @@ export default function FAQ() {
     </div>
   );
 }
+
