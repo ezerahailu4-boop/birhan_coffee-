@@ -1,4 +1,20 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const WHOLESALE_TIERS = [
+  { tier: 'Starter', volume: '1–5 bags', unit: '60kg/bag', pricePerKg: '$8.50', total: '$510–$2,550', perks: ['Free samples', 'Standard docs', 'Email support'], color: 'rgba(194,124,58,0.15)', border: 'rgba(194,124,58,0.25)' },
+  { tier: 'Partner', volume: '6–20 bags', unit: '60kg/bag', pricePerKg: '$7.80', total: '$2,808–$9,360', perks: ['Priority samples', 'Full traceability docs', 'Dedicated account manager', 'Custom lot selection'], color: 'rgba(194,124,58,0.22)', border: 'rgba(194,124,58,0.45)', featured: true },
+  { tier: 'Importer', volume: '20+ bags', unit: '60kg/bag', pricePerKg: '$6.90', total: 'Custom quote', perks: ['Exclusive lot reservation', 'Farm-level data', 'Custom processing', 'FOB/CIF/DAP terms', 'Annual contract pricing'], color: 'rgba(107,58,31,0.25)', border: 'rgba(194,124,58,0.35)' },
+];
+
+const SHIPPING_REGIONS = [
+  { region: 'Europe', flag: '🇪🇺', transit: '18–25 days', incoterm: 'CIF', baseRate: 1.20, note: 'Hamburg, Rotterdam, Antwerp' },
+  { region: 'North America', flag: '🇺🇸', transit: '22–30 days', incoterm: 'CIF', baseRate: 1.45, note: 'New York, Los Angeles, Seattle' },
+  { region: 'Middle East', flag: '🌍', transit: '10–15 days', incoterm: 'CIF', baseRate: 0.95, note: 'Dubai, Jeddah, Beirut' },
+  { region: 'Asia Pacific', flag: '🌏', transit: '20–28 days', incoterm: 'CIF', baseRate: 1.35, note: 'Tokyo, Seoul, Singapore' },
+  { region: 'Africa', flag: '🌍', transit: '7–12 days', incoterm: 'FOB', baseRate: 0.65, note: 'Nairobi, Lagos, Cairo' },
+  { region: 'Australia', flag: '🇦🇺', transit: '25–32 days', incoterm: 'CIF', baseRate: 1.55, note: 'Sydney, Melbourne' },
+];
 
 const REGIONS = [
   {
@@ -201,7 +217,152 @@ export default function Coffees({ onAddToCart }) {
             </div>
           ))}
         </div>
+
+        {/* ── WHOLESALE PRICING TIERS ── */}
+        <div style={{ marginTop: 100 }}>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <p className="section-label">B2B & Wholesale</p>
+            <h3 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 300, color: '#F5ECD7' }}>
+              Wholesale <em>Pricing Tiers</em>
+            </h3>
+            <div className="divider center" />
+            <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,0.5)', maxWidth: 500, margin: '0 auto', lineHeight: 1.8 }}>
+              Transparent pricing for roasters, importers, and distributors. All prices FOB Addis Ababa.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 20, marginBottom: 60 }}>
+            {WHOLESALE_TIERS.map(t => (
+              <div key={t.tier} style={{
+                background: t.color, border: `1px solid ${t.border}`,
+                borderRadius: 16, padding: '32px 28px',
+                position: 'relative', transition: 'transform .3s',
+              }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+              >
+                {t.featured && (
+                  <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: 'linear-gradient(135deg,#6B3A1F,#C27C3A)', borderRadius: 20, padding: '4px 16px', fontFamily: 'DM Sans,sans-serif', fontSize: '.6rem', letterSpacing: '.15em', textTransform: 'uppercase', color: '#F5ECD7', whiteSpace: 'nowrap' }}>
+                    Most Popular
+                  </div>
+                )}
+                <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.62rem', letterSpacing: '.2em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 8 }}>{t.tier}</div>
+                <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '2.4rem', fontWeight: 300, color: '#F5ECD7', lineHeight: 1 }}>{t.pricePerKg}</div>
+                <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.7rem', color: 'rgba(245,236,215,.4)', marginBottom: 4 }}>per kg · {t.unit}</div>
+                <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.78rem', color: 'rgba(245,236,215,.6)', marginBottom: 24 }}>Volume: {t.volume}</div>
+                <div style={{ width: '100%', height: 1, background: 'rgba(245,236,215,.08)', marginBottom: 20 }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 }}>
+                  {t.perks.map(p => (
+                    <div key={p} style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+                      <span style={{ color: '#C27C3A', fontSize: '.7rem', flexShrink: 0 }}>✦</span>
+                      <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.82rem', color: 'rgba(245,236,215,.65)', fontWeight: 300 }}>{p}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.68rem', color: 'rgba(245,236,215,.35)', marginBottom: 20 }}>Est. total: {t.total}</div>
+                <Link to="/sample-request" className="btn-primary" style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', padding: '12px', fontSize: '.68rem' }}>
+                  Get a Quote →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── SHIPPING CALCULATOR ── */}
+        <ShippingCalculator />
+
       </div>
     </section>
+  );
+}
+
+function ShippingCalculator() {
+  const [bags, setBags] = useState(5);
+  const [region, setRegion] = useState(SHIPPING_REGIONS[0]);
+  const kgPerBag = 60;
+  const pricePerKg = bags <= 5 ? 8.50 : bags <= 20 ? 7.80 : 6.90;
+  const coffeeValue = bags * kgPerBag * pricePerKg;
+  const shippingCost = bags * kgPerBag * region.baseRate;
+  const total = coffeeValue + shippingCost;
+
+  return (
+    <div style={{ marginTop: 80, background: 'rgba(255,255,255,.02)', border: '1px solid rgba(245,236,215,.07)', borderRadius: 20, overflow: 'hidden' }}>
+      <div style={{ padding: 'clamp(28px,4vw,48px)', borderBottom: '1px solid rgba(245,236,215,.06)', background: 'linear-gradient(135deg,rgba(107,58,31,.2),rgba(7,5,10,.4))' }}>
+        <p className="section-label">Estimate Your Order</p>
+        <h3 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 300, color: '#F5ECD7' }}>
+          Shipping <em>Calculator</em>
+        </h3>
+        <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,.5)', fontSize: '.88rem', marginTop: 8 }}>
+          Indicative CIF pricing. Final quotes confirmed by our logistics team.
+        </p>
+      </div>
+
+      <div style={{ padding: 'clamp(28px,4vw,48px)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+        {/* Controls */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+          {/* Bags slider */}
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
+              <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'rgba(194,124,58,.8)' }}>Number of Bags (60kg each)</label>
+              <span style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.4rem', color: '#C27C3A' }}>{bags}</span>
+            </div>
+            <input type="range" min={1} max={50} value={bags} onChange={e => setBags(Number(e.target.value))}
+              style={{ width: '100%', accentColor: '#C27C3A', cursor: 'pointer' }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
+              <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.6rem', color: 'rgba(245,236,215,.3)' }}>1 bag</span>
+              <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.6rem', color: 'rgba(245,236,215,.3)' }}>50 bags</span>
+            </div>
+          </div>
+
+          {/* Region selector */}
+          <div>
+            <label style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'rgba(194,124,58,.8)', display: 'block', marginBottom: 12 }}>Destination Region</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {SHIPPING_REGIONS.map(r => (
+                <button key={r.region} onClick={() => setRegion(r)}
+                  style={{ padding: '10px 16px', borderRadius: 8, textAlign: 'left', cursor: 'pointer', transition: 'all .2s', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    background: region.region === r.region ? 'rgba(194,124,58,.12)' : 'rgba(255,255,255,.03)',
+                    border: `1px solid ${region.region === r.region ? 'rgba(194,124,58,.4)' : 'rgba(245,236,215,.07)'}`,
+                  }}>
+                  <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.82rem', color: region.region === r.region ? '#C27C3A' : 'rgba(245,236,215,.6)' }}>{r.flag} {r.region}</span>
+                  <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', color: 'rgba(245,236,215,.35)' }}>{r.transit}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Results */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div style={{ background: 'rgba(194,124,58,.06)', border: '1px solid rgba(194,124,58,.15)', borderRadius: 12, padding: '24px' }}>
+            <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.6rem', letterSpacing: '.2em', textTransform: 'uppercase', color: 'rgba(194,124,58,.7)', marginBottom: 20 }}>Order Estimate</div>
+            {[
+              ['Volume', `${bags} bags · ${bags * kgPerBag} kg`],
+              ['Price/kg', `$${pricePerKg.toFixed(2)} (${bags <= 5 ? 'Starter' : bags <= 20 ? 'Partner' : 'Importer'} tier)`],
+              ['Coffee Value', `$${coffeeValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`],
+              ['Est. Shipping', `$${shippingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${region.incoterm})`],
+              ['Transit Time', region.transit],
+              ['Port', region.note],
+            ].map(([k, v]) => (
+              <div key={k} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid rgba(245,236,215,.05)' }}>
+                <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.78rem', color: 'rgba(245,236,215,.45)' }}>{k}</span>
+                <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.82rem', color: '#F5ECD7', fontWeight: 400 }}>{v}</span>
+              </div>
+            ))}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(194,124,58,.2)' }}>
+              <span style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.78rem', color: 'rgba(245,236,215,.6)', letterSpacing: '.1em', textTransform: 'uppercase' }}>Est. Total</span>
+              <span style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '2rem', color: '#C27C3A' }}>${total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+            </div>
+          </div>
+          <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.72rem', color: 'rgba(245,236,215,.3)', lineHeight: 1.6 }}>
+            * Indicative estimate only. Final pricing confirmed by our team based on current market rates, exact destination, and incoterms.
+          </p>
+          <a href={`mailto:info@birhancoffee.com?subject=Wholesale Quote — ${bags} bags to ${region.region}&body=Hi, I'd like a quote for ${bags} bags (${bags * kgPerBag}kg) shipped to ${region.region}.`}
+            className="btn-primary" style={{ justifyContent: 'center', textDecoration: 'none', padding: '14px' }}>
+            Request Confirmed Quote →
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
