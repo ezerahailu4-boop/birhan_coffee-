@@ -83,7 +83,7 @@ export default function CSR() {
       </div>
 
       {/* Initiatives Grid */}
-      <div style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)', background: '#150b04' }}>
+      <div style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)', background: '#2a1508' }}>
         <div className="container">
           <div className="csr-grid">
             {CSR_INITIATIVES.map(item => (
@@ -116,7 +116,7 @@ export default function CSR() {
       </div>
 
       {/* Vision / Mission / Values */}
-      <div style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)', background: '#1a0f05' }}>
+      <div style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,60px)', background: '#321a09' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 60 }}>
             <p className="section-label">{t.ourFoundation}</p>

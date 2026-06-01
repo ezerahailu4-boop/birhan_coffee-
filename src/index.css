@@ -1,15 +1,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --birhan-black:   #1a0f05;
-  --birhan-dark:    #221408;
-  --birhan-brown:   #8B4A1F;
-  --birhan-amber:   #D4893A;
-  --birhan-gold:    #E8B86D;
-  --birhan-cream:   #FDF3E3;
-  --birhan-muted:   rgba(253,243,227,0.6);
-  --birhan-subtle:  rgba(253,243,227,0.14);
-  --birhan-line:    rgba(253,243,227,0.1);
+  --birhan-black:   #2a1508;
+  --birhan-dark:    #321a09;
+  --birhan-brown:   #9B5A2F;
+  --birhan-amber:   #E09040;
+  --birhan-gold:    #F0C070;
+  --birhan-cream:   #FFF8EE;
+  --birhan-muted:   rgba(255,248,238,0.65);
+  --birhan-subtle:  rgba(255,248,238,0.15);
+  --birhan-line:    rgba(255,248,238,0.11);
   --font-display:   'Cormorant Garamond', serif;
   --font-body:      'DM Sans', sans-serif;
   --font-accent:    'Playfair Display', serif;
@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  background: #1a0f05;
+  background: #2a1508;
   color: var(--birhan-cream);
   font-family: var(--font-body);
   font-weight: 300;
@@ -32,7 +32,7 @@ body {
 }
 
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #1a0f05; }
+::-webkit-scrollbar-track { background: #2a1508; }
 ::-webkit-scrollbar-thumb { background: var(--birhan-amber); border-radius: 2px; }
 
 ::selection { background: rgba(212,137,58,0.35); color: var(--birhan-cream); }

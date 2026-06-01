@@ -25,7 +25,7 @@ const REGIONS = [
     characteristics: 'The world\'s most celebrated variety. Extraordinary floral complexity, jasmine, bergamot, and a tea-like delicacy that defines the pinnacle of specialty coffee.',
     process: 'Washed · Natural',
     notes: ['Jasmine', 'Bergamot', 'Tea-like', 'Floral'],
-    img: 'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=900&q=80&fit=crop',
+    img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80&fit=crop',
     badge: 'Rare Variety',
   },
 ];
@@ -43,7 +43,7 @@ export default function Coffees({ onAddToCart }) {
   return (
     <section id="coffees" style={{
       padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,60px)',
-      background: 'linear-gradient(180deg, #1a0f05 0%, #150b04 100%)',
+      background: 'linear-gradient(180deg, #2a1508 0%, #241204 100%)',
     }}>
       <div className="container">
 

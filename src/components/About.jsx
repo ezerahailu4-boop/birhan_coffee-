@@ -10,7 +10,7 @@ export default function About() {
       {/* About Section */}
       <section id="about" style={{
         padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,60px)',
-        background: '#150b04', position: 'relative',
+        background: '#2a1508', position: 'relative',
       }}>
         {/* BG photo */}
         <div className="bg-fixed" style={{
@@ -72,7 +72,7 @@ export default function About() {
       {/* Founder Section */}
       <section id="founder" style={{
         padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,60px)',
-        background: '#1a0f05',
+        background: '#321a09',
       }}>
         <div className="container">
           <div className="founder-grid">
