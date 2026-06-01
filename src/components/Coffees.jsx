@@ -25,7 +25,7 @@ const REGIONS = [
     characteristics: 'The world\'s most celebrated variety. Extraordinary floral complexity, jasmine, bergamot, and a tea-like delicacy that defines the pinnacle of specialty coffee.',
     process: 'Washed · Natural',
     notes: ['Jasmine', 'Bergamot', 'Tea-like', 'Floral'],
-    img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=900&q=80&fit=crop',
+    img: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=900&q=80&fit=crop',
     badge: 'Rare Variety',
   },
 ];
