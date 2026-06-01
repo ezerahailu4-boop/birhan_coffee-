@@ -3,17 +3,36 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../lang.jsx';
 
 const CONTACT_BG = 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=70&fit=crop';
+const FORMSPREE = 'https://formspree.io/f/xbdbvzbp';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '', interest: '' });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const { t } = useLang();
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 5000);
-    setForm({ name: '', email: '', company: '', message: '', interest: '' });
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch(FORMSPREE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSent(true);
+        setForm({ name: '', email: '', company: '', message: '', interest: '' });
+      } else {
+        setError('Something went wrong. Please try again or email us directly.');
+      }
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle = {
@@ -120,8 +139,9 @@ export default function Contact() {
                     <textarea required rows={5} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell us about your requirements..." value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                       onFocus={e => e.target.style.borderColor = '#C27C3A'} onBlur={e => e.target.style.borderColor = 'rgba(245,236,215,0.15)'} />
                   </div>
-                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '16px' }}>
-                    {t.sendMessage}
+                  {error && <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.82rem', color: '#ff6b6b', marginTop: 8 }}>{error}</p>}
+                  <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '16px', opacity: sending ? 0.7 : 1 }} disabled={sending}>
+                    {sending ? 'Sending…' : t.sendMessage}
                   </button>
                 </form>
               )}
