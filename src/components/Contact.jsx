@@ -131,7 +131,7 @@ export default function Contact() {
       </div>
 
       {/* Footer */}
-      <footer style={{ background: '#040302', borderTop: '1px solid rgba(245,236,215,0.06)' }}>
+      <footer style={{ background: '#0e0702', borderTop: '1px solid rgba(253,243,227,0.07)' }}>
         <style>{`
           .ft-link { font-family:'DM Sans',sans-serif; font-size:.84rem; font-weight:300; color:rgba(245,236,215,.5); text-decoration:none; display:flex; align-items:center; gap:7px; padding:5px 0; transition:color .2s; }
           .ft-link:hover { color:#C27C3A; }
@@ -174,7 +174,7 @@ export default function Contact() {
                 ))}
                 {/* WhatsApp separate so we can use onClick */}
                 <a
-                  href="https://wa.me/251911243099?text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee."
+                  href="https://web.whatsapp.com/send?phone=251911243099&text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee."
                   target="_blank"
                   rel="noreferrer"
                   title="WhatsApp"
@@ -224,7 +224,7 @@ export default function Contact() {
             {/* Contact */}
             <div>
               <div className="ft-col-title">Get In Touch</div>
-              <a href="https://wa.me/251911243099?text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee." target="_blank" rel="noreferrer" className="ft-link">
+              <a href="https://web.whatsapp.com/send?phone=251911243099&text=Hello%2C%20I%27m%20interested%20in%20Birhan%20Coffee." target="_blank" rel="noreferrer" className="ft-link">
                 <span className="ft-arr">→</span>💬 WhatsApp Us
               </a>
               {[

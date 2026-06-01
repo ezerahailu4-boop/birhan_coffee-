@@ -3,42 +3,9 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../lang.jsx';
 
 const REGIONS = [
-  {
-    id: 'yirgacheffe',
-    name: 'Yirgacheffe',
-    location: 'Southern Ethiopia',
-    altitude: '1,700 – 2,200m',
-    characteristics: 'Bright acidity, floral notes, vibrant citrusy profile. Among the most sought-after specialty coffees in the world.',
-    process: 'Washed · Natural · Honey',
-    notes: ['Floral', 'Citrus', 'Bergamot', 'Bright Acid'],
-    img: 'https://bebaxreserve.com/cdn/shop/files/Ethiopia-Coffee-Cherry.jpg?v=1729945368&width=1500',
-    price: 18.50,
-    badge: 'Signature Origin',
-  },
-  {
-    id: 'masha',
-    name: 'Masha',
-    location: 'Southwestern Ethiopia',
-    altitude: '1,800 – 2,100m',
-    characteristics: 'Rich body, fruity undertones, and a hint of warming spice. A complex cup for discerning enthusiasts.',
-    process: 'Natural · Honey',
-    notes: ['Stone Fruit', 'Spice', 'Rich Body', 'Complex'],
-    img: 'https://m.media-amazon.com/images/I/51qfX6Uf3BL._SL1000_.jpg',
-    price: 19.00,
-    badge: 'Specialty Lot',
-  },
-  {
-    id: 'jimma',
-    name: 'Jimma',
-    location: 'Western Ethiopia',
-    altitude: '1,400 – 2,000m',
-    characteristics: 'Robust, well-rounded flavour with chocolate and nutty notes. Fertile soils at lower altitudes yield a dependable, full-bodied cup.',
-    process: 'Washed · Natural',
-    notes: ['Chocolate', 'Nutty', 'Full Body', 'Balanced'],
-    img: 'https://www.abolcoffeeco.com/wp-content/uploads/2021/03/From-Family-Farmers.jpg',
-    price: 16.50,
-    badge: 'Classic Origin',
-  },
+  { id: 'yirgacheffe', name: 'Yirgacheffe', location: 'Southern Ethiopia', altitude: '1,700 – 2,200m', characteristics: 'Bright acidity, floral notes, vibrant citrusy profile. Among the most sought-after specialty coffees in the world.', process: 'Washed · Natural · Honey', notes: ['Floral', 'Citrus', 'Bergamot', 'Bright Acid'], img: 'https://bebaxreserve.com/cdn/shop/files/Ethiopia-Coffee-Cherry.jpg?v=1729945368&width=1500', badge: 'Signature Origin' },
+  { id: 'masha', name: 'Masha', location: 'Southwestern Ethiopia', altitude: '1,800 – 2,100m', characteristics: 'Rich body, fruity undertones, and a hint of warming spice. A complex cup for discerning enthusiasts.', process: 'Natural · Honey', notes: ['Stone Fruit', 'Spice', 'Rich Body', 'Complex'], img: 'https://m.media-amazon.com/images/I/51qfX6Uf3BL._SL1000_.jpg', badge: 'Specialty Lot' },
+  { id: 'jimma', name: 'Jimma', location: 'Western Ethiopia', altitude: '1,400 – 2,000m', characteristics: 'Robust, well-rounded flavour with chocolate and nutty notes. Fertile soils at lower altitudes yield a dependable, full-bodied cup.', process: 'Washed · Natural', notes: ['Chocolate', 'Nutty', 'Full Body', 'Balanced'], img: 'https://www.abolcoffeeco.com/wp-content/uploads/2021/03/From-Family-Farmers.jpg', badge: 'Classic Origin' },
   {
     id: 'saylem',
     name: 'Saylem',
@@ -48,16 +15,25 @@ const REGIONS = [
     process: 'Natural · Washed',
     notes: ['Berry', 'Sweet', 'Smooth', 'Balanced Acid'],
     img: 'https://sarocoffee.com/wp-content/uploads/2024/08/photo_2025-04-03_07-26-05.jpg',
-    price: 17.50,
     badge: 'Community Origin',
+  },
+  {
+    id: 'gesha',
+    name: 'Gesha',
+    location: 'Southwestern Ethiopia',
+    altitude: '1,900 – 2,300m',
+    characteristics: 'The world\'s most celebrated variety. Extraordinary floral complexity, jasmine, bergamot, and a tea-like delicacy that defines the pinnacle of specialty coffee.',
+    process: 'Washed · Natural',
+    notes: ['Jasmine', 'Bergamot', 'Tea-like', 'Floral'],
+    img: 'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?w=900&q=80&fit=crop',
+    badge: 'Rare Variety',
   },
 ];
 
 const PRODUCTS = [
-  { id: 'green', name: 'Green Beans', desc: 'Raw, unroasted specialty-grade Arabica. For roasters who demand perfection.', emoji: '🌿', price: 12.00 },
-  { id: 'roasted', name: 'Roasted Beans', desc: 'Expertly roasted to a medium-dark profile. Ready to grind and brew.', emoji: '☕', price: 16.00 },
-  { id: 'ground', name: 'Ground Coffee', desc: 'Pre-ground for convenience — drip, filter, French press, or espresso grind.', emoji: '🫙', price: 14.50 },
-  { id: 'capsules', name: 'Coffee Capsules', desc: 'Birhan in a capsule. Compatible with Nespresso® machines.', emoji: '💊', price: 22.00 },
+  { id: 'green', name: 'Green Beans', desc: 'Raw, unroasted specialty-grade Arabica. For roasters who demand perfection.', emoji: '🌿' },
+  { id: 'roasted', name: 'Roasted Beans', desc: 'Expertly roasted to a medium-dark profile. Ready to grind and brew.', emoji: '☕' },
+  { id: 'ground', name: 'Ground Coffee', desc: 'Pre-ground for convenience — drip, filter, French press, or espresso grind.', emoji: '🫙' },
 ];
 
 export default function Coffees({ onAddToCart }) {
@@ -67,7 +43,7 @@ export default function Coffees({ onAddToCart }) {
   return (
     <section id="coffees" style={{
       padding: 'clamp(80px,10vw,140px) clamp(20px,5vw,60px)',
-      background: 'linear-gradient(180deg, #07050a 0%, #0c0908 100%)',
+      background: 'linear-gradient(180deg, #1a0f05 0%, #150b04 100%)',
     }}>
       <div className="container">
 
@@ -108,20 +84,20 @@ export default function Coffees({ onAddToCart }) {
               <div style={{
                 position: 'absolute', inset: 0,
                 background: activeRegion === r.id
-                  ? 'linear-gradient(to top, rgba(7,5,10,0.95) 0%, rgba(7,5,10,0.5) 60%, rgba(7,5,10,0.15) 100%)'
-                  : 'linear-gradient(to top, rgba(7,5,10,0.85) 0%, rgba(7,5,10,0.3) 100%)',
+                  ? 'linear-gradient(to top, rgba(20,8,2,0.95) 0%, rgba(20,8,2,0.5) 60%, rgba(20,8,2,0.15) 100%)'
+                  : 'linear-gradient(to top, rgba(20,8,2,0.85) 0%, rgba(20,8,2,0.3) 100%)',
                 transition: 'background 0.4s',
               }} />
 
               {/* Badge */}
               <div style={{
                 position: 'absolute', top: 20, left: 20,
-                background: 'rgba(7,5,10,0.7)', backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(194,124,58,0.3)',
+                background: 'rgba(20,8,2,0.75)', backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(212,137,58,0.35)',
                 padding: '4px 12px', borderRadius: 20,
                 fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem',
                 letterSpacing: '0.15em', textTransform: 'uppercase',
-                color: '#C27C3A',
+                color: '#D4893A',
               }}>{r.badge}</div>
 
               {/* Content */}
@@ -130,9 +106,9 @@ export default function Coffees({ onAddToCart }) {
               }}>
                 <h3 style={{
                   fontFamily: 'Cormorant Garamond,serif', fontSize: '2.2rem',
-                  fontWeight: 600, color: '#F5ECD7', marginBottom: 4,
+                  fontWeight: 600, color: '#FDF3E3', marginBottom: 4,
                 }}>{r.name}</h3>
-                <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 12 }}>
+                <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#D4893A', marginBottom: 12 }}>
                   📍 {r.location} · ⛰ {r.altitude}
                 </p>
 
@@ -140,17 +116,17 @@ export default function Coffees({ onAddToCart }) {
                 <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 16 }}>
                   {r.notes.map(n => (
                     <span key={n} style={{
-                      background: 'rgba(194,124,58,0.15)', border: '1px solid rgba(194,124,58,0.25)',
+                      background: 'rgba(212,137,58,0.18)', border: '1px solid rgba(212,137,58,0.28)',
                       padding: '3px 10px', borderRadius: 20,
                       fontFamily: 'DM Sans,sans-serif', fontSize: '0.65rem',
-                      color: '#D4A55A',
+                      color: '#E8B86D',
                     }}>{n}</span>
                   ))}
                 </div>
 
                 <p style={{
                   fontFamily: 'DM Sans,sans-serif', fontWeight: 300, fontSize: '0.85rem',
-                  color: 'rgba(245,236,215,0.65)', lineHeight: 1.65,
+                  color: 'rgba(253,243,227,0.68)', lineHeight: 1.65,
                   maxHeight: activeRegion === r.id ? '100px' : '0',
                   overflow: 'hidden', transition: 'max-height 0.4s ease',
                   marginBottom: activeRegion === r.id ? 20 : 0,
@@ -158,14 +134,14 @@ export default function Coffees({ onAddToCart }) {
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.6rem', color: '#C27C3A' }}>${r.price.toFixed(2)}</div>
-                    <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.6rem', color: 'rgba(245,236,215,0.3)', letterSpacing: '0.1em' }}>{t.perBagLabel}</div>
+                    <div style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.4rem', color: '#D4893A', fontStyle: 'italic' }}>Negotiable</div>
+                    <div style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.6rem', color: 'rgba(253,243,227,0.35)', letterSpacing: '0.1em' }}>Contact for pricing</div>
                   </div>
                   <button
                     className="btn-primary"
                     style={{ padding: '10px 20px', fontSize: '0.65rem' }}
-                    onClick={() => onAddToCart({ id: r.id, name: `${r.name} Coffee`, price: r.price, emoji: '☕' })}
-                  >{t.addToCartBtn}</button>
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  >Enquire</button>
                 </div>
               </div>
             </div>
@@ -183,36 +159,36 @@ export default function Coffees({ onAddToCart }) {
           {PRODUCTS.map(p => (
             <div key={p.id} style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-              border: '1px solid rgba(245,236,215,0.08)',
+              border: '1px solid rgba(253,243,227,0.09)',
               borderRadius: 4, padding: 28,
               transition: 'all 0.3s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(194,124,58,0.3)'; e.currentTarget.style.background = 'rgba(194,124,58,0.06)'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(245,236,215,0.08)'; e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))'; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(212,137,58,0.35)'; e.currentTarget.style.background = 'rgba(212,137,58,0.08)'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(253,243,227,0.09)'; e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))'; }}
             >
               <div style={{ fontSize: '2rem', marginBottom: 16 }}>{p.emoji}</div>
-              <h4 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.3rem', color: '#F5ECD7', marginBottom: 8 }}>{p.name}</h4>
-              <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.82rem', fontWeight: 300, color: 'rgba(245,236,215,0.5)', lineHeight: 1.6, marginBottom: 20 }}>{p.desc}</p>
+              <h4 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.3rem', color: '#FDF3E3', marginBottom: 8 }}>{p.name}</h4>
+              <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '0.82rem', fontWeight: 300, color: 'rgba(253,243,227,0.55)', lineHeight: 1.6, marginBottom: 20 }}>{p.desc}</p>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.5rem', color: '#C27C3A' }}>${p.price.toFixed(2)}</span>
+                <span style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: '1.3rem', color: '#D4893A', fontStyle: 'italic' }}>Negotiable</span>
                 <button
                   className="btn-primary"
                   style={{ padding: '8px 16px', fontSize: '0.62rem' }}
-                  onClick={() => onAddToCart({ id: `prod-${p.id}`, name: p.name, price: p.price, emoji: p.emoji })}
-                >{t.addBtn}</button>
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >Enquire</button>
               </div>
             </div>
           ))}
         </div>
 
         {/* Wholesale CTA banner */}
-        <div style={{ marginTop: 80, background: 'linear-gradient(135deg,rgba(107,58,31,.25),rgba(194,124,58,.08))', border: '1px solid rgba(194,124,58,.2)', borderRadius: 16, padding: 'clamp(32px,5vw,56px)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
+        <div style={{ marginTop: 80, background: 'linear-gradient(135deg,rgba(139,74,31,.28),rgba(212,137,58,.1))', border: '1px solid rgba(212,137,58,.25)', borderRadius: 16, padding: 'clamp(32px,5vw,56px)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
           <div>
-            <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', letterSpacing: '.22em', textTransform: 'uppercase', color: '#C27C3A', marginBottom: 10 }}>{t.b2bLabel}</p>
-            <h3 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(1.6rem,3vw,2.4rem)', fontWeight: 300, color: '#F5ECD7', marginBottom: 10 }}>
-              {t.bulkTitle} <em style={{ color: '#D4A55A' }}>{t.bulkItalic}</em>
+            <p style={{ fontFamily: 'DM Sans,sans-serif', fontSize: '.65rem', letterSpacing: '.22em', textTransform: 'uppercase', color: '#D4893A', marginBottom: 10 }}>{t.b2bLabel}</p>
+            <h3 style={{ fontFamily: 'Cormorant Garamond,serif', fontSize: 'clamp(1.6rem,3vw,2.4rem)', fontWeight: 300, color: '#FDF3E3', marginBottom: 10 }}>
+              {t.bulkTitle} <em style={{ color: '#E8B86D' }}>{t.bulkItalic}</em>
             </h3>
-            <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(245,236,215,.5)', fontSize: '.88rem', maxWidth: 480, lineHeight: 1.7 }}>
+            <p style={{ fontFamily: 'DM Sans,sans-serif', fontWeight: 300, color: 'rgba(253,243,227,.55)', fontSize: '.88rem', maxWidth: 480, lineHeight: 1.7 }}>
               {t.bulkDesc}
             </p>
           </div>

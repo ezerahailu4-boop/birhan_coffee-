@@ -1,15 +1,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --birhan-black:   #07050a;
-  --birhan-dark:    #120d06;
-  --birhan-brown:   #6B3A1F;
-  --birhan-amber:   #C27C3A;
-  --birhan-gold:    #D4A55A;
-  --birhan-cream:   #F5ECD7;
-  --birhan-muted:   rgba(245,236,215,0.55);
-  --birhan-subtle:  rgba(245,236,215,0.12);
-  --birhan-line:    rgba(245,236,215,0.08);
+  --birhan-black:   #1a0f05;
+  --birhan-dark:    #221408;
+  --birhan-brown:   #8B4A1F;
+  --birhan-amber:   #D4893A;
+  --birhan-gold:    #E8B86D;
+  --birhan-cream:   #FDF3E3;
+  --birhan-muted:   rgba(253,243,227,0.6);
+  --birhan-subtle:  rgba(253,243,227,0.14);
+  --birhan-line:    rgba(253,243,227,0.1);
   --font-display:   'Cormorant Garamond', serif;
   --font-body:      'DM Sans', sans-serif;
   --font-accent:    'Playfair Display', serif;
@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  background: var(--birhan-black);
+  background: #1a0f05;
   color: var(--birhan-cream);
   font-family: var(--font-body);
   font-weight: 300;
@@ -32,10 +32,10 @@ body {
 }
 
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--birhan-black); }
+::-webkit-scrollbar-track { background: #1a0f05; }
 ::-webkit-scrollbar-thumb { background: var(--birhan-amber); border-radius: 2px; }
 
-::selection { background: rgba(194,124,58,0.3); color: var(--birhan-cream); }
+::selection { background: rgba(212,137,58,0.35); color: var(--birhan-cream); }
 
 img { max-width: 100%; display: block; }
 
@@ -152,11 +152,11 @@ a { text-decoration: none; color: inherit; }
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--birhan-amber), var(--birhan-gold));
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(194,124,58,0.3);
+  box-shadow: 0 10px 30px rgba(212,137,58,0.35);
 }
 .btn-outline {
   background: none;
-  border: 1px solid rgba(245,236,215,0.3);
+  border: 1px solid rgba(253,243,227,0.35);
   color: var(--birhan-cream);
   padding: 14px 36px;
   border-radius: 2px;
@@ -228,7 +228,7 @@ a { text-decoration: none; color: inherit; }
 .about-values { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-bottom: 36px; }
 
 /* ── Coffees grids ── */
-.coffees-origins  { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-bottom: 80px; }
+.coffees-origins  { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 80px; }
 .coffees-products { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
 
 /* ── CSR grids ── */
@@ -286,7 +286,7 @@ a { text-decoration: none; color: inherit; }
   }
 
   /* Coffees */
-  .coffees-origins  { grid-template-columns: 1fr; }
+  .coffees-origins  { grid-template-columns: repeat(2,1fr); }
   .coffees-products { grid-template-columns: repeat(2,1fr); }
 
   /* FarmToCup */

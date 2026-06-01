@@ -1,24 +1,26 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 
-const SYSTEM_PROMPT = `You are Selam, the friendly AI guide for Birhan Coffee PLC — a premium Ethiopian specialty coffee exporter, Addis Ababa, Ethiopia. Founded 2019 by Birhanu Lemi.
+const SYSTEM_PROMPT = `You are Meaza, the warm and knowledgeable AI guide for Birhan Coffee PLC — a premium Ethiopian specialty coffee exporter based in Addis Ababa, Ethiopia. Founded in 2019 by Birhanu Lemi.
 
 KEY FACTS:
-- Top 100 Ethiopian coffee exporters | Exporting internationally since 2022
+- Top Ethiopian coffee exporter | Exporting internationally since 2022
 - HQ: Bole Sub-City, Addis Ababa | Phone: +251 091 124 3099 | Email: Birhancoffee24@gmail.com
 - Processing: Yirgacheffe facility (washed/natural/honey) + Sebeta (wet/dry milling)
+- Founder Birhanu Lemi: 25+ years across cosmetics, food manufacturing, and import-export trade
 
 ORIGINS:
 1. Yirgacheffe – S. Ethiopia, 1700–2200m – Floral, citrus, bright acidity. Washed/Natural/Honey
 2. Masha – SW Ethiopia, 1800–2100m – Fruity, spice, rich body. Natural/Honey
 3. Jimma – W. Ethiopia, 1400–2000m – Chocolate, nutty, robust. Washed/Natural
 4. Saylem – S. Ethiopia, 1700–2100m – Berry, sweet, smooth. Natural/Washed
+5. Gesha – SW Ethiopia, 1900–2300m – Jasmine, bergamot, tea-like, extraordinary floral complexity. Washed/Natural
 
-PRODUCTS: Green beans · Roasted beans · Ground coffee · Nespresso-compatible capsules
-PRICING: Retail $12–$22/250g depending on product | Wholesale: contact for quote
+PRODUCTS: Green beans · Roasted beans · Ground coffee
+PRICING: All pricing is negotiable — contact us for a personalised quote | Wholesale: contact for quote
 
 CSR (Saylem): 12km road maintained · 2 bridges built · 200+ farmers trained · 3x fair prices paid directly
 
-FOUNDER: Birhanu Lemi – 25 yrs business, Birhan & BLT personal care brand. Multiple awards.
+FOUNDER: Birhanu Lemi – 25+ yrs in cosmetics, food manufacturing & import-export. Top Ethiopian exporter. Multiple awards.
 TEAM: Agronomists, Harvesting Specialists, Q-graders (84+ cup score), Logistics & Export
 VALUES: Quality · Sustainability · Community · Integrity
 
@@ -27,23 +29,24 @@ Ethiopian phrases: Selam (hello), Buna (coffee), Tena Yistilign (to your health)
 Be warm, concise (2-4 sentences), proud of Ethiopia's coffee. Use markdown bold for key terms. Direct trade enquiries to Birhancoffee24@gmail.com.`;
 
 const KB = [
-  { patterns:['hello','hi','hey','selam','howdy','greetings','morning','afternoon','evening','start','help','what can you'], response:`Selam! ☕ I'm Selam, Birhan Coffee's guide.\n\nI can help with:\n• **Our origins** — Yirgacheffe, Masha, Jimma, Saylem\n• **Products** — green beans, roasted, ground, capsules\n• **CSR & community** work in Saylem\n• **Founder** Birhanu Lemi's story\n• **Ordering & wholesale** info\n• **Brewing tips** for Ethiopian coffee\n\nWhat would you like to know? *Tena Yistilign!*` },
-  { patterns:['about','company','birhan','history','background','established','founded','2019','story','who are you','tell me about'], response:`**Birhan Coffee PLC** was founded in 2019 in Addis Ababa, Ethiopia, by Birhanu Lemi ☕.\n\nKey milestones:\n• 2019 — Founded; built direct farmer relationships\n• 2020 — Opened modern Sebeta processing facility\n• 2022 — Began international exports\n• Today — **Top 100 Ethiopian Exporter**, 200+ farming families, 4 origins, global reach` },
+  { patterns:['hello','hi','hey','selam','howdy','greetings','morning','afternoon','evening','start','help','what can you'], response:`Selam! ☕ I'm **Meaza**, Birhan Coffee's AI guide.\n\nI can help with:\n• **Our origins** — Yirgacheffe, Masha, Jimma, Saylem, Gesha\n• **Products** — green beans, roasted, ground\n• **CSR & community** work in Saylem\n• **Founder** Birhanu Lemi's story\n• **Ordering & wholesale** info\n• **Brewing tips** for Ethiopian coffee\n\nWhat would you like to know? *Tena Yistilign!*` },
+  { patterns:['about','company','birhan','history','background','established','founded','2019','story','who are you','tell me about'], response:`**Birhan Coffee PLC** was founded in 2019 in Addis Ababa, Ethiopia, by Birhanu Lemi ☕.\n\nKey milestones:\n• 2019 — Founded; built direct farmer relationships\n• 2020 — Opened modern Sebeta processing facility\n• 2022 — Began international exports\n• Today — **Top Ethiopian Exporter**, 200+ farming families, 5 origins, global reach` },
   { patterns:['yirgacheffe','yirgachefe','yirg'], response:`**Yirgacheffe** — our crown jewel ☕\n\n📍 Southern Ethiopia · ⛰ 1,700–2,200 masl\n🌸 **Flavour:** Bright acidity · jasmine · bergamot · lemon zest\n⚙️ **Processing:** Washed · Natural · Honey\n\nWorld-renowned as the benchmark for washed Ethiopian coffees.` },
   { patterns:['masha','southwestern ethiopia'], response:`**Masha** — rich and complex 🌿\n\n📍 Southwestern Ethiopia · ⛰ 1,800–2,100 masl\n🍑 **Flavour:** Stone fruit · peach · warming spice · rich full body\n⚙️ **Processing:** Natural & Honey` },
   { patterns:['jimma','western ethiopia'], response:`**Jimma** — the robust classic 🍫\n\n📍 Western Ethiopia · ⛰ 1,400–2,000 masl\n🍫 **Flavour:** Dark chocolate · hazelnut · full-bodied\n⚙️ **Processing:** Washed & Natural` },
   { patterns:['saylem','sayelem'], response:`**Saylem** — sweet and smooth 🍓\n\n📍 Southern Ethiopia · ⛰ 1,700–2,100 masl\n🍓 **Flavour:** Wild berry · honey · blackcurrant · smooth body\n⚙️ **Processing:** Natural & Washed\n\nSaylem is also the heart of our CSR work — we maintain a 12km road, built 2 bridges, and run farmer education programmes.` },
-  { patterns:['origin','region','where','farm','all coffee','four','4 origins'], response:`Birhan Coffee sources from **four legendary Ethiopian regions** 🗺️:\n\n• **Yirgacheffe** (Southern, 1700–2200m) — Floral · Citrus · Bright\n• **Masha** (Southwestern, 1800–2100m) — Fruity · Spice · Rich body\n• **Jimma** (Western, 1400–2000m) — Chocolate · Nutty · Bold\n• **Saylem** (Southern, 1700–2100m) — Berry · Sweet · Smooth\n\nAll single-origin, fully traceable, 100% Ethiopian Arabica.` },
-  { patterns:['product','buy','purchase','order','shop','capsule','ground','roasted','green bean'], response:`Birhan Coffee offers **four product formats** ☕:\n\n• 🌿 **Green Beans** — Raw specialty Arabica ($12/250g)\n• ☕ **Roasted Beans** — Medium-dark roasted ($16/250g)\n• 🫙 **Ground Coffee** — Drip, filter, French press or espresso ($14.50/250g)\n• 💊 **Capsules** — Nespresso-compatible pods ($22/pack)\n\nFor wholesale: **Birhancoffee24@gmail.com** · **+251 091 124 3099**` },
-  { patterns:['price','cost','how much','pricing'], response:`**Retail pricing per 250g** 💰:\n\n• Green Beans — **$12.00**\n• Roasted Beans — **$16.00**\n• Ground Coffee — **$14.50**\n• Capsules — **$22.00**\n\nWholesale pricing varies by origin, grade, and volume. Email **Birhancoffee24@gmail.com** for a quote.` },
+  { patterns:['gesha','geisha'], response:`**Gesha** — the world's most celebrated variety 🌸\n\n📍 Southwestern Ethiopia · ⛰ 1,900–2,300 masl\n🌸 **Flavour:** Jasmine · bergamot · tea-like delicacy · extraordinary floral complexity\n⚙️ **Processing:** Washed & Natural\n\nGesha defines the absolute pinnacle of specialty coffee.` },
+  { patterns:['origin','region','where','farm','all coffee','four','4 origins','five','5 origins'], response:`Birhan Coffee sources from **five legendary Ethiopian regions** 🗺️:\n\n• **Yirgacheffe** (Southern, 1700–2200m) — Floral · Citrus · Bright\n• **Masha** (Southwestern, 1800–2100m) — Fruity · Spice · Rich body\n• **Jimma** (Western, 1400–2000m) — Chocolate · Nutty · Bold\n• **Saylem** (Southern, 1700–2100m) — Berry · Sweet · Smooth\n• **Gesha** (Southwestern, 1900–2300m) — Jasmine · Bergamot · Tea-like\n\nAll single-origin, fully traceable, 100% Ethiopian Arabica.` },
+  { patterns:['product','buy','purchase','order','shop','ground','roasted','green bean'], response:`Birhan Coffee offers **three product formats** ☕:\n\n• 🌿 **Green Beans** — Raw specialty Arabica\n• ☕ **Roasted Beans** — Medium-dark roasted\n• 🫙 **Ground Coffee** — Drip, filter, French press or espresso\n\nAll pricing is **negotiable** — contact us for a personalised quote.\nEmail: **Birhancoffee24@gmail.com** · **+251 091 124 3099**` },
+  { patterns:['price','cost','how much','pricing'], response:`All Birhan Coffee pricing is **negotiable** 💰 and tailored to your order volume, origin, and format.\n\nContact us for a personalised quote:\n• ✉️ **Birhancoffee24@gmail.com**\n• 📞 **+251 091 124 3099**\n\nWe respond within **24 hours**.` },
   { patterns:['csr','social responsib','community','road','bridge','farmer training','impact'], response:`Birhan Coffee's **CSR in Saylem** 🌍:\n\n• **12km Road Maintenance** — Farmers transport cherries efficiently\n• **Two Community Bridges** — Safe year-round passage for families\n• **Farmer Education** — Sustainable farming, health, financial literacy\n• **3× Fair Prices** — Paid directly to 200+ farming families, no middlemen` },
-  { patterns:['founder','birhanu','lemi','ceo','who started','who founded'], response:`**Birhanu Lemi** — Founder & CEO 👤\n\nBorn in Ethiopia's coffee highlands, Birhanu spent **25+ years** in business before channelling his passion into Birhan Coffee in 2019.\n\n**Recognition:** Multiple national & international awards for sustainable farming and fair trade. Reached **Top 100 Ethiopian Exporter** within just 3 years.` },
+  { patterns:['founder','birhanu','lemi','ceo','who started','who founded'], response:`**Birhanu Lemi** — Founder & CEO 👤\n\nA visionary entrepreneur with **25+ years** of experience across cosmetics, food manufacturing, and import-export trade. In 2019, he channelled his passion into Birhan Coffee PLC.\n\n**Recognition:** Multiple national & international awards. Built Birhan Coffee into a **Top Ethiopian Exporter** within just 3 years of founding.` },
   { patterns:['process','processing','washed','natural','honey','milling'], response:`Three **processing methods** at Birhan Coffee 🏭:\n\n• 🚿 **Washed** — Pulped, fermented, washed. Clean, bright acidity.\n• ☀️ **Natural** — Whole cherries sun-dried. Intense fruit & sweetness.\n• 🍯 **Honey** — Partial pulping with mucilage dried on. Sweet balance.` },
-  { patterns:['ceremony','buna','jebena','tradition','cultural'], response:`The **Ethiopian Buna Ceremony** 🏺:\n\n1. Roasting — Green beans over charcoal\n2. Grinding — Mortar and pestle\n3. Brewing — In a clay **Jebena** pot\n4. Three Rounds: **Abol** (strongest) · **Tona** · **Baraka** (blessing)\n\nTakes ~45 minutes. *Tena Yistilign!*` },
+  { patterns:['ceremony','buna','jebena','tradition','cultural'], response:`The **Ethiopian Buna Ceremony** 🏺 — a sacred ritual of connection:\n\n1. 🌿 **Green beans** are carefully sorted and washed\n2. 🔥 **Roasting** over charcoal in an iron pan, stirred constantly\n3. 💨 **Wafting** the aromatic smoke to guests as a blessing\n4. ☕ **Brewing** in a clay **Jebena** pot with water\n5. **Three sacred rounds:** *Abol* (strength) · *Tona* (blessing) · *Baraka* (grace)\n\nFresh grass (*tena adam*) is scattered on the floor. Incense burns. The ceremony takes 45–60 minutes and is an act of love, hospitality, and community. *Tena Yistilign!*` },
   { patterns:['flavour','flavor','taste','note','fruity','floral','chocolate','berry','citrus'], response:`Ethiopian coffees offer **extraordinary flavour diversity** 🍋🌸🍓🍫:\n\n• **Yirgacheffe** — Jasmine · bergamot · lemon · sparkling acidity\n• **Masha** — Stone fruit · cherry · warming spice · rich body\n• **Jimma** — Dark chocolate · hazelnut · smooth finish\n• **Saylem** — Wild blueberry · honey · blackcurrant · natural sweetness` },
   { patterns:['brew','brewing','how to make','filter','espresso','french press','recipe'], response:`Brewing tips for Birhan Coffee ☕:\n\n• **Pour Over** — Yirgacheffe (93°C · 1:15 · medium-coarse)\n• **French Press** — Jimma/Masha (95°C · 1:12 · coarse)\n• **Espresso** — Saylem/Jimma (93°C · 1:2 · fine)\n• **AeroPress** — Any origin (88°C · 1:10 · medium-fine)\n• **Jebena** — Traditional Ethiopian (boiling · very fine)` },
   { patterns:['contact','reach','email','phone','call','address','get in touch'], response:`**Birhan Coffee PLC** 📞\n\n📍 Bole Sub-City, Addis Ababa, Ethiopia\n📞 **+251 091 124 3099**\n✉️ **Birhancoffee24@gmail.com**\n🌐 **www.birhancoffee.com**\n\nWe respond within **24 hours**.` },
-  { patterns:['wholesale','bulk','import','export','trade','roaster','b2b','partner'], response:`Birhan Coffee works with **roasters, importers & distributors worldwide** 🌍:\n\n• Single-origin green bean lots, multiple grades\n• Fully traceable with complete documentation\n• End-to-end export logistics from Addis Ababa\n• Active exporter since 2022 · **Top 100 Ethiopian Exporter**\n\nContact: **Birhancoffee24@gmail.com** | **+251 091 124 3099**` },
+  { patterns:['wholesale','bulk','import','export','trade','roaster','b2b','partner'], response:`Birhan Coffee works with **roasters, importers & distributors worldwide** 🌍:\n\n• Single-origin green bean lots, multiple grades\n• Fully traceable with complete documentation\n• End-to-end export logistics from Addis Ababa\n• Active exporter since 2022 · **Top Ethiopian Exporter**\n\nContact: **Birhancoffee24@gmail.com** | **+251 091 124 3099**` },
   { patterns:['thank','thanks','ameseginalew','appreciate','helpful','great','wonderful'], response:`Ameseginaleh! 🙏☕ So glad I could help. Is there anything else you'd like to know about Birhan Coffee? *Tena Yistilign!*` },
   { patterns:['bye','goodbye','see you','later','farewell'], response:`Ciao for now! ☕\n\n🌐 www.birhancoffee.com · ✉️ Birhancoffee24@gmail.com · 📞 +251 091 124 3099\n\n*Tena Yistilign — to your health!*` },
 ];
@@ -111,7 +114,7 @@ export default function Chatbot() {
   const [apiOk,  setApiOk]  = useState(true);
   const [msgs,   setMsgs]   = useState([{
     role: 'assistant',
-    content: "Selam! ☕ I'm **Selam**, Birhan Coffee's AI guide.\n\nAsk me anything about our Ethiopian specialty coffees, origins, CSR work, or how to order. *Tena Yistilign!*",
+    content: "Selam! ☕ I'm **Meaza**, Birhan Coffee's AI guide.\n\nAsk me anything about our Ethiopian specialty coffees, origins, CSR work, or how to order. *Tena Yistilign!*",
   }]);
   const [input,  setInput]  = useState('');
   const [typing, setTyping] = useState(false);
@@ -262,7 +265,7 @@ export default function Chatbot() {
                 boxShadow:'0 0 20px rgba(194,124,58,0.45)',
               }}>☕</div>
               <div>
-                <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:'1.15rem', fontWeight:700, color:'#F5ECD7', lineHeight:1.2 }}>Selam</div>
+                <div style={{ fontFamily:'Cormorant Garamond,serif', fontSize:'1.15rem', fontWeight:700, color:'#F5ECD7', lineHeight:1.2 }}>Meaza</div>
                 <div style={{ display:'flex', alignItems:'center', gap:6, marginTop:3 }}>
                   <span style={{ width:7, height:7, borderRadius:'50%', background:dotColor, display:'inline-block', boxShadow:`0 0 8px ${dotColor}` }} />
                   <span style={{ fontFamily:'DM Sans,sans-serif', fontSize:'0.58rem', letterSpacing:'0.15em', textTransform:'uppercase', color:'rgba(194,124,58,0.8)' }}>
@@ -279,8 +282,7 @@ export default function Chatbot() {
               )}
               <button onClick={() => { setMsgs([{ role:'assistant', content:"Selam! ☕ Fresh start. How can I help you today? *Tena Yistilign!*" }]); }}
                 title="Clear chat"
-                style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(245,236,215,0.08)', color:'rgba(245,236,215,0.5)', width:32, height:32, borderRadius:8, cursor:'pointer', fontSize:'0.75rem', transition:'all 0.2s' }}>
-                🗑️
+                style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(245,236,215,0.08)', color:'rgba(245,236,215,0.5)', width:32, height:32, borderRadius:8, cursor:'pointer', fontSize:'0.75rem', transition:'all 0.2s' }}>🗑️
               </button>
               <button onClick={() => setOpen(false)}
                 style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(245,236,215,0.08)', color:'rgba(245,236,215,0.6)', width:32, height:32, borderRadius:8, cursor:'pointer', fontSize:'1.1rem', lineHeight:1, transition:'all 0.2s', display:'flex', alignItems:'center', justifyContent:'center' }}>
@@ -397,7 +399,7 @@ export default function Chatbot() {
       <button
         className="chat-fab-btn"
         onClick={() => setOpen(v => !v)}
-        title={open ? 'Close chat' : 'Chat with Selam (AI-powered)'}
+        title={open ? 'Close chat' : 'Chat with Meaza (AI-powered)'}
         style={{
           position:'fixed', bottom:28, right:28, zIndex:5000,
           width:58, height:58, borderRadius:'50%',

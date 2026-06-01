@@ -41,11 +41,11 @@ export default function Hero({ onExplore }) {
       {/* Gradient overlays */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to right, rgba(7,5,10,0.92) 40%, rgba(7,5,10,0.5) 80%, rgba(7,5,10,0.3) 100%)',
+        background: 'linear-gradient(to right, rgba(20,8,2,0.93) 40%, rgba(20,8,2,0.55) 80%, rgba(20,8,2,0.3) 100%)',
       }} />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to top, rgba(7,5,10,0.8) 0%, transparent 50%)',
+        background: 'linear-gradient(to top, rgba(20,8,2,0.85) 0%, transparent 50%)',
       }} />
 
       {/* Content */}
@@ -56,7 +56,7 @@ export default function Hero({ onExplore }) {
               fontFamily: 'Cormorant Garamond, serif',
               fontSize: 'clamp(2.8rem, 7vw, 6.5rem)',
               fontWeight: 300, lineHeight: 0.95,
-              color: '#F5ECD7', letterSpacing: '-0.02em',
+              color: '#FDF3E3', letterSpacing: '-0.02em',
               marginBottom: 8,
             }}>
               {t.heroLine1}
@@ -66,7 +66,7 @@ export default function Hero({ onExplore }) {
               fontSize: 'clamp(2.8rem, 7vw, 6.5rem)',
               fontWeight: 600, lineHeight: 0.95,
               fontStyle: 'italic',
-              color: '#C27C3A', letterSpacing: '-0.02em',
+              color: '#E8903A', letterSpacing: '-0.02em',
               marginBottom: 8,
             }}>
               {t.heroLine2}
@@ -75,7 +75,7 @@ export default function Hero({ onExplore }) {
               fontFamily: 'Cormorant Garamond, serif',
               fontSize: 'clamp(2.8rem, 7vw, 6.5rem)',
               fontWeight: 300, lineHeight: 0.95,
-              color: '#F5ECD7', letterSpacing: '-0.02em',
+              color: '#FDF3E3', letterSpacing: '-0.02em',
               marginBottom: 36,
             }}>
               {t.heroLine3}
@@ -86,7 +86,7 @@ export default function Hero({ onExplore }) {
             <p style={{
               fontFamily: 'DM Sans, sans-serif', fontWeight: 300,
               fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)',
-              color: 'rgba(245,236,215,0.65)',
+              color: 'rgba(253,243,227,0.72)',
               lineHeight: 1.75, marginBottom: 44, maxWidth: 500,
             }}>
               {t.heroDesc}
@@ -99,10 +99,10 @@ export default function Hero({ onExplore }) {
 
           {/* Stats strip */}
           <div className="hero-stats">
-            {[['200+', 'Partner Farmers'], ['4', 'Origin Regions'], ['Top 100', 'Ethiopian Exporters'], ['2019', 'Founded']].map(([n, l]) => (
+            {[['200+', 'Partner Farmers'], ['4', 'Origin Regions'], ['Top', 'Exporter'], ['2019', 'Founded']].map(([n, l]) => (
               <div key={l}>
-                <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 600, color: '#C27C3A' }}>{n}</div>
-                <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(245,236,215,0.35)' }}>{l}</div>
+                <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 600, color: '#E8903A' }}>{n}</div>
+                <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(253,243,227,0.42)' }}>{l}</div>
               </div>
             ))}
           </div>

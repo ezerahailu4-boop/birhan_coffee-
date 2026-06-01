@@ -59,7 +59,7 @@ export default function FarmToCup() {
   return (
     <section id="farmtocup" style={{
       padding: 'clamp(80px,10vw,140px) clamp(16px,5vw,60px)',
-      background: '#07050a',
+      background: '#1a0f05',
       position: 'relative',
     }}>
       <div style={{
