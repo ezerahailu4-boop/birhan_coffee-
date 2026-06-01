@@ -4,6 +4,7 @@ import { useLang } from '../lang.jsx';
 
 const CONTACT_BG = 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1600&q=70&fit=crop';
 const FORMSPREE = 'https://formspree.io/f/xbdbvzbp';
+const WEB3FORMS_KEY = '8cd2f142-0ac7-4d6d-9cd7-2fbb92590ea2';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '', interest: '' });
@@ -17,12 +18,13 @@ export default function Contact() {
     setSending(true);
     setError('');
     try {
-      const res = await fetch(FORMSPREE, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ access_key: WEB3FORMS_KEY, ...form }),
       });
-      if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
         setSent(true);
         setForm({ name: '', email: '', company: '', message: '', interest: '' });
       } else {
